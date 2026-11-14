@@ -1,0 +1,36 @@
+# dependencies and build output
+node_modules/
+dist/
+.vercel/
+
+# secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# test output
+coverage/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# logs, caches, editor and OS files
+*.log
+*.tsbuildinfo
+.eslintcache
+.DS_Store
+.vscode/
+.idea/
+.claude/
+
+# mutation testing output
+reports/
+.stryker-tmp/
+
+# private planning documents (never committed)
+.planning/
+
+# local key files kept by the owner (never committed)
+API Keys.txt
+*.key

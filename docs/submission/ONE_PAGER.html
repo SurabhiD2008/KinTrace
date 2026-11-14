@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>KinTrace: one-page summary</title>
+<!-- Colours, borders, shadows and fonts come from the app's own token file. Numbers and
+     links marked data-fill are written by scripts/onepager.mjs (npm run onepager). -->
+<link rel="stylesheet" href="../../src/styles/tokens.css">
+<style>
+  @font-face {
+    font-family: 'Barlow Condensed';
+    font-weight: 700;
+    font-display: block;
+    src: url('../../node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-700-normal.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Barlow Condensed';
+    font-weight: 600;
+    font-display: block;
+    src: url('../../node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-600-normal.woff2') format('woff2');
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    color: var(--color-ink);
+    font-size: 8.4pt;
+    line-height: 1.28;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .sheet {
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    padding: 8mm 10mm 7mm;
+    background-color: var(--color-paper);
+    background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: var(--heading-weight);
+    letter-spacing: var(--heading-tracking);
+    margin: 0;
+    line-height: 1.05;
+  }
+  h1 { font-size: 30pt; color: var(--color-blue); }
+  h2 { font-size: 12.5pt; margin-bottom: var(--space-1); text-transform: uppercase; }
+  p { margin: 0 0 var(--space-1); }
+  ul { margin: 0; padding-left: 1.1em; }
+  li { margin-bottom: 2px; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-4); }
+  .tagline { font-family: var(--font-heading); font-weight: 600; font-size: 13pt; margin-top: 2px; }
+  .event { text-align: right; font-size: 7.6pt; color: var(--color-muted); }
+  .card {
+    background: var(--color-card);
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: var(--space-2) var(--space-3);
+  }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  .sticker {
+    display: inline-block;
+    border: var(--border);
+    border-radius: var(--radius);
+    font-family: var(--font-heading);
+    font-weight: var(--heading-weight);
+    font-size: 8pt;
+    letter-spacing: var(--sticker-tracking);
+    text-transform: uppercase;
+    padding: 0 var(--space-1);
+    line-height: 1.5;
+  }
+  .meets { background: var(--status-meets); }
+  .discuss { background: var(--status-discuss); }
+  .none { background: var(--status-none); }
+  .unknown { background: var(--status-unknown); }
+  .flow { display: flex; align-items: center; flex-wrap: nowrap; gap: 3px; margin: var(--space-1) 0; }
+  .node {
+    border: var(--border);
+    border-radius: var(--radius);
+    background: var(--color-card);
+    padding: 2px 5px;
+    font-size: 7.4pt;
+    line-height: 1.2;
+    text-align: center;
+    flex: 1 1 0;
+  }
+  .node b { font-family: var(--font-heading); font-size: 9pt; display: block; }
+  .node.ai { background: var(--color-mustard); }
+  .node.rules { background: var(--color-mint); }
+  .node.out { background: var(--status-meets); }
+  .arrow { font-weight: 700; color: var(--color-blue); flex: 0 0 auto; }
+  .caption { font-size: 7.6pt; color: var(--color-muted); margin-top: 2px; }
+  .numbers { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); margin: var(--space-1) 0 var(--space-2); }
+  .num { border: var(--border); border-radius: var(--radius); background: var(--color-paper); text-align: center; padding: 2px 0; }
+  .num b { font-family: var(--font-heading); font-size: 16pt; display: block; color: var(--color-blue); line-height: 1.1; }
+  .num span { font-size: 7.2pt; }
+  .links { display: flex; justify-content: space-between; gap: var(--space-4); font-size: 8.4pt; }
+  .links a { color: var(--color-blue); font-weight: 700; text-decoration: none; }
+  .rule { font-weight: 700; }
+  footer { margin-top: auto; }
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header>
+    <div>
+      <h1>KinTrace</h1>
+      <div class="tagline">Your family tree, checked against clinical guidelines</div>
+    </div>
+    <div class="event">AI x Healthcare<br>Privacy-first web app, runs in the browser</div>
+  </header>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Problem</h2>
+      <p>Family history is the cheapest screening input medicine has, and one of the most under-used. It costs nothing to collect, yet appointments rarely leave time to take it properly.</p>
+      <p>Most people do not know which relatives matter: that a mother's breast cancer at 38 or a father's heart attack at 57 is exactly what a referral guideline asks about, or that an aunt's ovarian cancer counts on the same side of the family.</p>
+    </section>
+    <section class="card">
+      <h2>Solution</h2>
+      <ul>
+        <li><span class="rule">Draw the tree</span>, or describe it in a sentence and confirm the suggested entries.</li>
+        <li><span class="rule">Pick a guideline</span>: NICE CG164 (breast and ovarian cancer), Amsterdam II (Lynch syndrome), NICE CG71, the DLCN family-history item and NICE NG238 (early heart disease, familial hypercholesterolaemia).</li>
+        <li><span class="rule">See which criteria are met</span>: <span class="sticker meets">Meets criteria</span> <span class="sticker discuss">Worth discussing</span> <span class="sticker none">No criteria met</span>, each with its rule steps and the relatives who triggered it ringed on the tree.</li>
+        <li><span class="rule">Take a one-page doctor report</span> to the appointment.</li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>How it works</h2>
+    <div class="flow">
+      <div class="node"><b>Tree builder</b>React UI</div><span class="arrow">&rarr;</span>
+      <div class="node"><b>Store</b>memory + localStorage</div><span class="arrow">&rarr;</span>
+      <div class="node"><b>Domain graph</b>pure TypeScript</div><span class="arrow">&rarr;</span>
+      <div class="node"><b>Relationship engine</b>degree, side, lines</div><span class="arrow">&rarr;</span>
+      <div class="node rules"><b>Guideline rules</b>deterministic functions</div><span class="arrow">&rarr;</span>
+      <div class="node out"><b>Findings + report</b>steps and evidence</div>
+    </div>
+    <div class="flow">
+      <div class="node"><b>Quick add</b>free text</div><span class="arrow">&rarr;</span>
+      <div class="node"><b>Offline parser</b>in the browser, default</div><span class="arrow">or</span>
+      <div class="node ai"><b>/api/parse</b>only if AI is switched on</div><span class="arrow">&rarr;</span>
+      <div class="node"><b>Proposed entries</b>schema-checked, quotes verified</div><span class="arrow">&rarr;</span>
+      <div class="node"><b>User confirms</b>each entry, then into the store</div>
+    </div>
+    <p class="caption">Everything except the optional parse function runs in the browser. Any failure of the AI path falls back to the offline parser.</p>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Where AI is used, and why only there</h2>
+      <p>Exactly one place: turning a typed sentence ("My mum had breast cancer at 38") into proposed tree entries. Language is messy; that is where a model helps.</p>
+      <p>Findings are a different job. A referral criterion is a precise rule with ages and degrees of relationship, so it is code that gives the same answer every time and is tested at each threshold. No model decides, ranks or words a finding. The AI switch is off by default, every proposed entry must be accepted by the user, any entry quoting text that is not in the input is dropped, and an offline parser does the job with no key at all.</p>
+    </section>
+    <section class="card">
+      <h2>Safety and ethics</h2>
+      <ul>
+        <li><span class="rule">No diagnosis, no percentages.</span> Never a risk figure, probability or score; only which published criteria are met.</li>
+        <li><span class="rule">Unknown is never healthy.</span> A missing age leaves a criterion open (<span class="sticker discuss">Worth discussing</span>), and a completeness meter shows what is not known.</li>
+        <li><span class="rule">Data stays on the device.</span> No accounts, no database, no analytics. A browser test asserts zero requests to other origins; with AI on, only the typed text goes to the same-origin parse function, which logs no content.</li>
+        <li><span class="rule">Sources shown.</span> Every finding names its guideline, rule steps and review date.</li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>Validation</h2>
+    <div class="numbers">
+      <div class="num"><b data-fill="unit">999</b><span>unit, component, property and fuzz tests</span></div>
+      <div class="num"><b data-fill="browser">266</b><span>browser tests across Chromium, Firefox, WebKit and five widths</span></div>
+      <div class="num"><b data-fill="mutation">78.4%</b><span>mutation score on the guideline rules</span></div>
+      <div class="num"><b data-fill="bugs">15</b><span>bugs found by testing, each fixed with a test</span></div>
+    </div>
+    <p>Every browser test runs under a guard that fails it on console errors, failed requests, overflow from 320 px wide, accessibility violations or layout shift. The edge tests found, among others: two browser tabs silently overwriting each other's tree, blocked storage reported as saved, a double click adding two people, the report dated the wrong day in some time zones, an adopted user told to "add your parents", and a hung AI service leaving the user waiting with no way to cancel.</p>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Limitations</h2>
+      <ul>
+        <li>Not a medical device; it does not replace a clinician or genetic counsellor.</li>
+        <li>Guidelines are UK, Dutch and international; local guidance may differ.</li>
+        <li>Spanish and Hindi need a fluent review; the offline parser is English only.</li>
+        <li>Relatives up to third degree; some specialist criteria are not implemented.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2>Roadmap</h2>
+      <ul>
+        <li>Other conditions: familial colorectal cancer beyond Lynch, inherited cardiomyopathy and sudden cardiac death.</li>
+        <li>More guidelines, so users can pick the guidance their own health system uses.</li>
+        <li>More languages, each reviewed by fluent speakers, with an offline parser for each.</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer class="card links">
+    <span>Live: <a data-fill="site" href="https://github.com/SurabhiD2008/KinTrace#deploy">deployment in progress</a></span>
+    <span>Code: <a data-fill="repo" href="https://github.com/SurabhiD2008/KinTrace">github.com/SurabhiD2008/KinTrace</a></span>
+  </footer>
+</main>
+</body>
+</html>

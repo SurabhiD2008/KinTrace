@@ -1,0 +1,58 @@
+/* KinTrace design tokens. Source of truth: docs/DESIGN.md. Do not redesign. */
+:root {
+  /* Colours */
+  --color-paper: #f4ecdc;
+  --color-card: #fffbf2;
+  --color-ink: #17163f;
+  --color-blue: #2b2d8f;
+  --color-coral: #ff7a59;
+  --color-mustard: #f4c542;
+  --color-mint: #9adbc0;
+  --color-magenta: #b0307a;
+  --color-muted: #3c3b66;
+  --color-tan: #cbbf9f;
+
+  /* Status colours */
+  --status-meets: var(--color-coral);
+  --status-discuss: var(--color-mustard);
+  --status-none: var(--color-mint);
+  --status-unknown: var(--color-tan);
+
+  /* Page background dot grid */
+  --grid-dot: rgba(23, 22, 63, 0.16);
+  --grid-size: 22px;
+
+  /* Borders, radius, hard offset shadow (no blur) */
+  --border-width: 2px;
+  --border: var(--border-width) solid var(--color-ink);
+  --border-dashed: var(--border-width) dashed var(--color-ink);
+  --radius: 4px;
+  --shadow: 4px 4px 0 var(--color-ink);
+  --shadow-pressed: 2px 2px 0 var(--color-ink);
+  --press-shift: 2px;
+
+  /* Typography */
+  --font-heading: 'Agency FB', 'Agency FB Bold', 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: Arial, Helvetica, sans-serif;
+  --heading-weight: 700;
+  --heading-tracking: 0.01em;
+  --sticker-size: 12px;
+  --sticker-tracking: 0.03em;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* Accessibility */
+  --focus-ring: 3px solid var(--color-blue);
+  --focus-offset: 2px;
+  --touch-target: 44px;
+
+  --content-width: 960px;
+  --transition-fast: 80ms ease-out;
+}

@@ -1,0 +1,33 @@
+.kt-sticker {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-2);
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--color-card);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--sticker-size);
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: var(--sticker-tracking);
+  white-space: nowrap;
+}
+
+.kt-sticker--meets {
+  background: var(--status-meets);
+}
+
+.kt-sticker--discuss {
+  background: var(--status-discuss);
+}
+
+.kt-sticker--none {
+  background: var(--status-none);
+}
+
+.kt-sticker--unknown {
+  background: var(--status-unknown);
+  border: var(--border-dashed);
+}

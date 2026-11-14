@@ -1,0 +1,119 @@
+.kt-quick {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.kt-quick__help,
+.kt-quick__count {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.kt-quick textarea {
+  width: 100%;
+  min-height: 112px;
+  padding: var(--space-2) var(--space-3);
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--color-card);
+  color: var(--color-ink);
+  resize: vertical;
+}
+
+.kt-quick__examples {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.kt-quick__examples .kt-chip {
+  max-width: 100%;
+  font-weight: 400;
+  text-align: left;
+}
+
+.kt-quick__results-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.kt-quick__results-head h3 {
+  margin: 0;
+}
+
+.kt-quick__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kt-suggestion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--color-paper);
+}
+
+.kt-suggestion[data-status='needs_choice'],
+.kt-suggestion[data-status='refused'] {
+  border-style: dashed;
+}
+
+.kt-suggestion p {
+  margin: 0;
+}
+
+.kt-suggestion__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.kt-suggestion__title {
+  margin: 0;
+  font-size: 1.25rem;
+  overflow-wrap: anywhere;
+}
+
+.kt-suggestion__quote mark {
+  padding: 0 var(--space-1);
+  background: var(--color-mustard);
+  color: var(--color-ink);
+}
+
+.kt-suggestion__facts {
+  margin: 0;
+  padding-left: var(--space-4);
+}
+
+.kt-suggestion__choice {
+  margin-bottom: 0;
+}
+
+.kt-quick__unparsed {
+  padding: var(--space-3);
+  border: var(--border-dashed);
+  border-radius: var(--radius);
+  background: var(--color-paper);
+}
+
+.kt-quick__unparsed h3 {
+  font-size: 1.25rem;
+}
+
+.kt-quick__unparsed ul {
+  margin: 0;
+  padding-left: var(--space-4);
+}

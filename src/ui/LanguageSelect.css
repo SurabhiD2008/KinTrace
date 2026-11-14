@@ -1,0 +1,29 @@
+.kt-lang select {
+  min-height: var(--touch-target);
+  padding: var(--space-1) var(--space-3);
+  border: var(--border);
+  border-radius: var(--radius);
+  background-color: var(--color-card);
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+.kt-fallback {
+  position: fixed;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  z-index: 30;
+  margin: 0;
+  padding: var(--space-1) var(--space-3);
+  border: var(--border-dashed);
+  border-radius: var(--radius);
+  background: var(--color-tan);
+  color: var(--color-ink);
+  font-size: 0.875rem;
+}
+
+@media print {
+  .kt-fallback {
+    display: none;
+  }
+}

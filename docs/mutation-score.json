@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-14",
+  "scope": "src/guidelines and src/domain/relationships.ts",
+  "score": 78.4,
+  "killed": 1377,
+  "scored": 1757,
+  "survived": 354,
+  "noCoverage": 26,
+  "excluded": 46
+}

@@ -1,0 +1,206 @@
+[
+  {
+    "id": "h-grandad-decade",
+    "text": "Grandad had a heart attack in his fifties.",
+    "expect": {
+      "entries": [
+        {
+          "relation": "maternal_grandfather",
+          "conditions": [
+            {
+              "code": "coronary_event",
+              "certainty": "reported",
+              "ageUnknown": true,
+              "ageNote": "in his fifties"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "h-nephew-aged",
+    "text": "My nephew was diagnosed with bowel cancer aged 29.",
+    "expect": {
+      "entries": [
+        {
+          "relation": "nephew",
+          "conditions": [
+            {
+              "code": "colorectal",
+              "ageAtOnset": 29,
+              "certainty": "reported"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "h-mums-mum",
+    "text": "Mum's mum had ovarian cancer.",
+    "expect": {
+      "entries": [
+        {
+          "relation": "maternal_grandmother",
+          "side": "maternal",
+          "conditions": [
+            {
+              "code": "ovarian",
+              "certainty": "reported"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "h-fathers-brother-died",
+    "text": "My father's brother died suddenly of a heart attack at 48.",
+    "expect": {
+      "entries": [
+        {
+          "relation": "uncle",
+          "side": "paternal",
+          "deceased": true,
+          "conditions": [
+            {
+              "code": "coronary_event",
+              "ageAtOnset": 48,
+              "certainty": "reported"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "h-siblings-cholesterol",
+    "text": "My brother and sister both have high cholesterol.",
+    "expect": {
+      "entries": [
+        {
+          "relation": "brother",
+          "conditions": [
+            {
+              "code": "high_ldl",
+              "certainty": "reported"
+            }
+          ]
+        },
+        {
+          "relation": "sister",
+          "conditions": [
+            {
+              "code": "high_ldl",
+              "certainty": "reported"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "h-twice",
+    "text": "My aunt had breast cancer twice, at 41 and 55.",
+    "expect": {
+      "entries": [
+        {
+          "relation": "aunt",
+          "conditions": [
+            {
+              "code": "breast",
+              "ageAtOnset": 41,
+              "certainty": "reported"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "h-daughters-son",
+    "text": "My daughter's son has type two diabetes.",
+    "expect": {
+      "entries": [
+        {
+          "relation": "grandchild",
+          "sex": "male",
+          "conditions": [
+            {
+              "code": "diabetes_type2",
+              "certainty": "reported"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "h-granny-dads-side",
+    "text": "Granny on dad's side passed away at 90.",
+    "expect": {
+      "entries": [
+        {
+          "relation": "paternal_grandmother",
+          "deceased": true,
+          "ageAtDeath": 90,
+          "conditions": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "h-not-sure-if",
+    "text": "I'm not sure if my uncle had prostate cancer.",
+    "expect": {
+      "entries": [
+        {
+          "relation": "uncle",
+          "conditions": [
+            {
+              "code": "prostate",
+              "certainty": "unsure"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "h-cousin-number-word",
+    "text": "My cousin had a stroke at thirty-one",
+    "expect": {
+      "entries": [
+        {
+          "relation": "cousin",
+          "conditions": [
+            {
+              "code": "stroke",
+              "ageAtOnset": 31,
+              "certainty": "reported"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "h-nobody-side",
+    "text": "Nobody on my mum's side had cancer.",
+    "expect": {
+      "entries": [],
+      "unparsed": []
+    }
+  },
+  {
+    "id": "h-in-law",
+    "text": "My partner's mother had breast cancer at 50.",
+    "expect": {
+      "entries": [],
+      "unparsed": [
+        "relation_unclear"
+      ]
+    }
+  }
+]

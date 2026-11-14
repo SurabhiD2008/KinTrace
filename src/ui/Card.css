@@ -1,0 +1,18 @@
+.kt-card {
+  padding: var(--space-5);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: var(--color-card);
+  color: var(--color-ink);
+}
+
+.kt-card > :last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 480px) {
+  .kt-card {
+    padding: var(--space-4);
+  }
+}

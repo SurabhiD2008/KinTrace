@@ -1,0 +1,190 @@
+.kt-canvas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.kt-canvas__bar,
+.kt-canvas__tools,
+.kt-canvas__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.kt-canvas__bar {
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.kt-canvas__actions-label {
+  font-weight: 700;
+}
+
+.kt-canvas__hint {
+  flex-basis: 100%;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.kt-canvas__viewport {
+  height: clamp(320px, 56vh, 640px);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: var(--color-card);
+  overflow: hidden;
+  cursor: grab;
+  /* The tree handles its own panning; stop the browser scrolling it instead. */
+  touch-action: none;
+}
+
+.kt-canvas__viewport:active {
+  cursor: grabbing;
+}
+
+.kt-canvas__svg {
+  display: block;
+  user-select: none;
+}
+
+.kt-line {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 2;
+}
+
+.kt-line--dashed {
+  stroke-dasharray: 6 5;
+}
+
+.kt-node {
+  cursor: pointer;
+  outline: none;
+}
+
+/* Clicks on a label fall through to the person's hit area underneath. */
+.kt-node__labels {
+  pointer-events: none;
+}
+
+.kt-node__hit {
+  fill: transparent;
+}
+
+.kt-node__symbol {
+  fill: var(--color-card);
+  stroke: var(--color-ink);
+  stroke-width: 2;
+}
+
+.kt-node__symbol--unknown-history {
+  fill: var(--color-tan);
+  stroke-dasharray: 6 4;
+}
+
+.kt-node__symbol--selected {
+  fill: var(--color-mint);
+  stroke-width: 4;
+}
+
+/* Not part of the open finding. Kept dark enough to stay readable. */
+.kt-node--dim {
+  opacity: 0.65;
+}
+
+.kt-node__count circle {
+  fill: var(--color-ink);
+}
+
+.kt-node__count text {
+  fill: var(--color-card);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.kt-node__mark {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 2;
+}
+
+/* Evidence ring: a 3px ink line with a 3px paper gap inside it. */
+.kt-node__evidence {
+  fill: var(--color-paper);
+  stroke: var(--color-ink);
+  stroke-width: 3;
+}
+
+.kt-node__focus {
+  fill: none;
+  stroke: var(--color-blue);
+  stroke-width: 3;
+  opacity: 0;
+}
+
+.kt-node:focus-visible .kt-node__focus {
+  opacity: 1;
+}
+
+.kt-node__name,
+.kt-node__you {
+  fill: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.kt-node__condition {
+  fill: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+
+.kt-badge {
+  stroke: var(--color-ink);
+  stroke-width: 0.75;
+  paint-order: stroke;
+}
+
+.kt-badge--cancer {
+  fill: var(--color-blue);
+}
+
+.kt-badge--cardio {
+  fill: var(--color-magenta);
+}
+
+.kt-badge--metabolic {
+  fill: var(--color-mustard);
+}
+
+.kt-legend__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: var(--space-2) var(--space-4);
+  margin: var(--space-3) 0 0;
+  padding: var(--space-4);
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--color-card);
+  list-style: none;
+}
+
+.kt-legend__list[hidden] {
+  display: none;
+}
+
+.kt-legend__list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+}
+
+.kt-legend__list svg {
+  flex: none;
+}

@@ -1,0 +1,221 @@
+/* The report: a sheet of paper on a desk, and exactly that sheet when printed. */
+.kt-report__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: var(--color-card);
+}
+
+.kt-report__controls .kt-field {
+  margin: 0;
+}
+
+.kt-report__controls select {
+  min-height: var(--touch-target);
+  padding: var(--space-1) var(--space-3);
+  border: var(--border);
+  border-radius: var(--radius);
+  background-color: var(--color-card);
+  color: var(--color-ink);
+}
+
+.kt-report__controls .kt-check {
+  margin: 0;
+}
+
+.kt-report__help,
+.kt-report__status {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.kt-report__status:empty {
+  display: none;
+}
+
+.kt-report__desk {
+  overflow-x: auto;
+  padding: var(--space-6) var(--space-4);
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--color-tan);
+}
+
+.kt-paper {
+  --paper-width: 794px;
+  --paper-height: 1123px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+  width: var(--paper-width);
+  height: var(--paper-height);
+  margin: 0 auto;
+  padding: 12mm;
+  overflow: hidden;
+  border: var(--border);
+  box-shadow: var(--shadow);
+  background: var(--color-card);
+  color: var(--color-ink);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.kt-paper--letter {
+  --paper-width: 816px;
+  --paper-height: 1056px;
+}
+
+.kt-paper p,
+.kt-paper ul,
+.kt-paper ol {
+  margin: 0;
+}
+
+.kt-paper ul,
+.kt-paper ol {
+  padding-left: 16px;
+}
+
+.kt-paper h2 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.kt-paper__title {
+  margin: 0 0 2px;
+  font-size: 30px;
+}
+
+.kt-paper__sources {
+  font-size: 10px;
+}
+
+/* The tree takes whatever room the text leaves, so a larger family is drawn smaller, never onto a second page. */
+.kt-paper__tree {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-height: 150px;
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: 4px 8px;
+}
+
+.kt-paper__svg {
+  flex: 1 1 0;
+  width: 100%;
+  min-height: 0;
+}
+
+.kt-paper__table {
+  width: 100%;
+  border-collapse: collapse;
+  /* The global table rule sets 1rem; the sheet keeps its own small size. */
+  font-size: inherit;
+}
+
+.kt-paper__table th,
+.kt-paper__table td {
+  padding: 3px 4px;
+  border-top: 1px solid var(--color-ink);
+  text-align: left;
+  vertical-align: top;
+}
+
+.kt-paper__table .kt-sticker {
+  font-size: 9px;
+  padding: 1px 4px;
+}
+
+.kt-paper__flag {
+  font-style: italic;
+}
+
+.kt-paper__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.kt-paper__footer {
+  padding-top: 6px;
+  border-top: var(--border);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* The printer gets the chosen paper and 12 mm margins. Named pages keep this in the
+   stylesheet: an inline <style> would be blocked by the Content-Security-Policy. */
+@page {
+  margin: 12mm;
+}
+
+@page kt-a4 {
+  size: A4;
+  margin: 12mm;
+}
+
+@page kt-letter {
+  size: letter;
+  margin: 12mm;
+}
+
+@media print {
+  .kt-report[data-paper='a4'] {
+    page: kt-a4;
+  }
+
+  .kt-report[data-paper='letter'] {
+    page: kt-letter;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    background: none;
+  }
+
+  .kt-report__screen,
+  .kt-review__note,
+  .kt-fallback {
+    display: none !important;
+  }
+
+  .page.kt-report {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .kt-report__desk {
+    overflow: visible;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  /* The sheet fills the printable area of one page (paper minus 12 mm margins) and no more. */
+  .kt-paper {
+    width: 100%;
+    height: calc(297mm - 24mm);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .kt-paper--letter {
+    height: calc(279.4mm - 24mm);
+  }
+}

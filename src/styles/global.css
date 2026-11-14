@@ -1,0 +1,212 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-paper);
+  background-image: radial-gradient(var(--grid-dot) 1.2px, transparent 1.4px);
+  background-size: var(--grid-size) var(--grid-size);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  /* A word longer than its column (a guideline name on a phone) wraps instead of widening the page. */
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+.heading {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-heading);
+  font-weight: var(--heading-weight);
+  text-transform: uppercase;
+  letter-spacing: var(--heading-tracking);
+  line-height: 1.05;
+  hyphens: auto;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+
+h3 {
+  font-size: 1.625rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0 0 var(--space-4);
+}
+
+button,
+input,
+select,
+textarea,
+table {
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+a {
+  color: var(--color-blue);
+  text-underline-offset: 2px;
+}
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+.muted {
+  color: var(--color-muted);
+}
+
+.page {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4) var(--space-7);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+a.kt-button {
+  text-decoration: none;
+}
+
+.link-target {
+  display: inline-flex;
+  align-items: center;
+  min-width: var(--touch-target);
+  min-height: var(--touch-target);
+}
+
+/* A small pressable label: relatives, filters, examples. */
+.kt-chip {
+  min-height: var(--touch-target);
+  padding: var(--space-1) var(--space-3);
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--color-card);
+  color: var(--color-ink);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.logo {
+  font-size: 4.5rem;
+  margin-bottom: var(--space-2);
+}
+
+/* The name as a link home, on pages without the landing header. */
+.kt-wordmark {
+  display: inline-block;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .logo {
+    font-size: 3.25rem;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Notices: used by the builder and by the storage notices every page shows. */
+.kt-notice {
+  margin: 0;
+  padding: var(--space-4);
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--color-mustard);
+}
+
+.kt-notice--error {
+  background: var(--color-card);
+  border-color: var(--color-magenta);
+  border-width: 3px;
+}
+
+.kt-notice p {
+  margin-bottom: var(--space-3);
+  font-weight: 700;
+}
+
+.kt-storage-notices {
+  display: grid;
+  gap: var(--space-3);
+  padding-bottom: 0;
+}
+
+.kt-storage-notices:empty {
+  display: none;
+}
+
+/* Drop-downs are drawn by the page: WebKit ignores the height of its own menu style, which
+   left selects under the tap-target height. The chevron is two gradients in the ink colour. */
+select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--color-ink) 50%),
+    linear-gradient(135deg, var(--color-ink) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.125rem) 50%,
+    calc(100% - 0.8125rem) 50%;
+  background-size: 0.3125rem 0.3125rem;
+  background-repeat: no-repeat;
+}
+
+.kt-field select:not([multiple]),
+.kt-lang select:not([multiple]),
+.kt-report__controls select:not([multiple]) {
+  padding-right: 2.25rem;
+}
