@@ -389,11 +389,6 @@
       "check": "media-name",
       "file": "media/kintrace-thumbnail-1200x800.png",
       "reason": "The owner asked for the project thumbnail (for LinkedIn and Devpost cards) to be kept in media/ with the other showcase images."
-    },
-    {
-      "check": "media-name",
-      "file": "media/kintrace-thumbnail-1200x627.png",
-      "reason": "The owner asked for the project thumbnail (for LinkedIn and Devpost cards) to be kept in media/ with the other showcase images."
     }
   ]
 }
