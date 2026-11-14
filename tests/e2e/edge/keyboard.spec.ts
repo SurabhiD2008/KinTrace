@@ -8,11 +8,21 @@ let TAB = 'Tab';
 
 /** Presses Tab until the target has focus. */
 async function tabTo(page: Page, target: Locator, max = 120) {
+  const visited: string[] = [];
   for (let i = 0; i < max; i += 1) {
     if (await target.evaluate((element) => element === document.activeElement)) return;
     await page.keyboard.press(TAB);
+    visited.push(
+      await page.evaluate(() => {
+        const el = document.activeElement;
+        if (!el) return 'nothing';
+        const name = (el.getAttribute('aria-label') ?? el.textContent ?? '').trim().slice(0, 30);
+        return `${el.tagName.toLowerCase()}${el.id ? `#${el.id}` : ''} "${name}"`;
+      }),
+    );
   }
-  throw new Error('could not reach the element with Tab');
+  // Where focus went in the last presses shows where it is trapped.
+  throw new Error(`could not reach the element with Tab; last stops: ${[...new Set(visited.slice(-12))].join(' | ')}`);
 }
 
 test('Keyboard only: build a tree, add a condition, open findings, expand a card, open the report', { tag: '@cross-browser' }, async ({ page, browserName }) => {
