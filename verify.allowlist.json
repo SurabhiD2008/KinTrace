@@ -384,6 +384,16 @@
       "file": "tests/e2e/guard.selftest.spec.ts",
       "line": "body: '<!doctype html><html lang=\"en\"><head><title>Self-test</title></head><body><main><h1>Self-test</h1></main><script>try { new Function(\"\"); } catch (error) {}</script></body></html>',",
       "reason": "The guard self-test plants the blocked eval probe on purpose, inside a page it serves itself, to prove the Content-Security-Policy check fires."
+    },
+    {
+      "check": "media-name",
+      "file": "media/kintrace-thumbnail-1200x800.png",
+      "reason": "The owner asked for the project thumbnail (for LinkedIn and Devpost cards) to be kept in media/ with the other showcase images."
+    },
+    {
+      "check": "media-name",
+      "file": "media/kintrace-thumbnail-1200x627.png",
+      "reason": "The owner asked for the project thumbnail (for LinkedIn and Devpost cards) to be kept in media/ with the other showcase images."
     }
   ]
 }
