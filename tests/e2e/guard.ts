@@ -42,14 +42,14 @@ export type PageCheck = 'overflow' | 'clipped' | 'targets' | 'axe' | 'layoutShif
 export const PAGE_WATCHERS = () => {
   const state = { shift: 0, lostFocus: [] as string[] };
   window.__guard = state;
-  try {
+  // Layout-shift entries exist only in Chromium. Asking for them elsewhere makes Firefox log a
+  // warning on every page, so the observer is started only where the type is supported.
+  if (PerformanceObserver.supportedEntryTypes.includes('layout-shift')) {
     new PerformanceObserver((list) => {
       for (const entry of list.getEntries() as (PerformanceEntry & { value: number; hadRecentInput: boolean })[]) {
         if (!entry.hadRecentInput) state.shift += entry.value;
       }
     }).observe({ type: 'layout-shift', buffered: true });
-  } catch {
-    // Layout-shift entries exist only in Chromium; other browsers report no shift.
   }
   // A blocked eval, inline script or outside request breaks the Content-Security-Policy.
   // Firefox logs each one as a console error, but Chromium and WebKit only fire this event,
