@@ -51,6 +51,13 @@ export const PAGE_WATCHERS = () => {
   } catch {
     // Layout-shift entries exist only in Chromium; other browsers report no shift.
   }
+  // A blocked eval, inline script or outside request breaks the Content-Security-Policy.
+  // Firefox logs each one as a console error, but Chromium and WebKit only fire this event,
+  // so the guard turns the event into a console error and every browser fails the same way.
+  document.addEventListener('securitypolicyviolation', (event) => {
+    // eslint-disable-next-line no-console -- the guard reports violations through the console it already watches
+    console.error(`CSP violation: ${event.violatedDirective} blocked ${event.blockedURI || 'inline code'}`);
+  });
   let lastPress = 0;
   // A press on empty page moves focus to the body on purpose; that is not lost focus. The check
   // waits 100 ms so the page's own focus handling (after a dialog closes, say) can run first.

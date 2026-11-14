@@ -47,7 +47,7 @@ KinTrace lets you draw your family tree, or describe it in a sentence, pick a pu
 ### Accomplishments that we're proud of
 
 - No risk numbers anywhere, and a test suite that checks for them.
-- 999 unit, component, property and fuzz tests, 266 browser tests across three engines and five screen widths, and a mutation score of 78.4% on the guideline rules and relationship engine.
+- 1002 unit, component, property and fuzz tests, 267 browser tests across three engines and five screen widths, and a mutation score of 78.4% on the guideline rules and relationship engine.
 - A full demo with zero keys: the sample family and the offline parser need nothing but a browser.
 - A one-page doctor report that always prints on one page.
 

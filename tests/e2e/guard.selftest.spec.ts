@@ -55,6 +55,24 @@ test('the guard reports lost focus', async ({ page }) => {
   expect(await inspectPage(page, new Set(['axe']))).toEqual(expect.arrayContaining([expect.stringMatching(/^lost focus/)]));
 });
 
+test('the guard reports a Content-Security-Policy violation, even a caught one', async ({ page, context }) => {
+  const found: string[] = [];
+  watchEvents(context, found, () => false);
+  await context.addInitScript(PAGE_WATCHERS);
+  // The same probe a library makes to see whether eval is allowed: blocked, caught, and silent
+  // in Chromium unless the guard listens for the violation event.
+  await page.route('**/guard-selftest-csp', (route) =>
+    route.fulfill({
+      contentType: 'text/html',
+      headers: { 'Content-Security-Policy': "script-src 'self' 'unsafe-inline'" },
+      body: '<!doctype html><html lang="en"><head><title>Self-test</title></head><body><main><h1>Self-test</h1></main><script>try { new Function(""); } catch (error) {}</script></body></html>',
+    }),
+  );
+  await page.goto('/guard-selftest-csp');
+  await page.waitForTimeout(300);
+  expect(found).toEqual(expect.arrayContaining([expect.stringMatching(/^console\.error: CSP violation: script-src/)]));
+});
+
 test('the guard records console errors, page errors and failed requests', async ({ page, context }) => {
   const found: string[] = [];
   watchEvents(context, found, () => false);

@@ -107,7 +107,7 @@ describe('method page', () => {
 
   it('shows the recorded test counts and the golden results from the running engine', () => {
     renderAt('/method', createSamplePedigree());
-    expect(screen.getByText(/Latest full test run: \d+ unit and component tests and \d+ end-to-end tests, all passing\./)).toBeInTheDocument();
+    expect(screen.getByText(/Latest full test run: [\d,]+ unit and component tests and [\d,]+ end-to-end tests, all passing\./)).toBeInTheDocument();
     const golden = screen.getByRole('table', { name: 'The sample family, evaluated by the code running in this page' });
     expect(within(golden).getAllByRole('row').slice(1).map((r) => r.textContent)).toEqual([
       'NICE CG164Meets criteriaMother, Maternal grandmother, Maternal aunt',

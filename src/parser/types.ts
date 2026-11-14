@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from '../zod.js';
 import { CONDITION_CODES, CONFIRMATIONS, LIMITS, SEXES } from '../domain/types.js';
 
 // The one contract shared by the offline parser, the serverless AI parser,

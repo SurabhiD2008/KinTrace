@@ -378,6 +378,12 @@
       "check": "media-name",
       "file": "docs/submission/JUDGING_MAP.md",
       "reason": "The hackathon submission brief asks for its assets in docs/submission/; the owner instruction takes precedence over the no-submission-folder rule."
+    },
+    {
+      "check": "raw-html-or-eval",
+      "file": "tests/e2e/guard.selftest.spec.ts",
+      "line": "body: '<!doctype html><html lang=\"en\"><head><title>Self-test</title></head><body><main><h1>Self-test</h1></main><script>try { new Function(\"\"); } catch (error) {}</script></body></html>',",
+      "reason": "The guard self-test plants the blocked eval probe on purpose, inside a page it serves itself, to prove the Content-Security-Policy check fires."
     }
   ]
 }
