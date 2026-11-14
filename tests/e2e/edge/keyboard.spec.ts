@@ -11,7 +11,13 @@ async function tabTo(page: Page, target: Locator, max = 120) {
   const visited: string[] = [];
   for (let i = 0; i < max; i += 1) {
     if (await target.evaluate((element) => element === document.activeElement)) return;
-    await page.keyboard.press(TAB);
+    // A target above the focused element is reached with Shift+Tab, as a keyboard user would:
+    // headless Firefox does not wrap from the end of the page back to the top.
+    const above = await target.evaluate((element) => {
+      const active = document.activeElement;
+      return Boolean(active && active !== document.body && element.compareDocumentPosition(active) & Node.DOCUMENT_POSITION_FOLLOWING);
+    });
+    await page.keyboard.press(above ? `Shift+${TAB}` : TAB);
     visited.push(
       await page.evaluate(() => {
         const el = document.activeElement;
