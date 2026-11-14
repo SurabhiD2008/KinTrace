@@ -203,6 +203,21 @@ regression test that fails without the fix.
   `MutationObserver`), so only the app's own time is measured. No retry or sleep was added.
 - **Regression test.** e2e `13c`, repeated 3 × 3 times green, then in the final three `test:all` runs.
 
+## BUG-016: the deployed parse function crashed on every request
+
+- **What broke.** On the first Vercel deployment, `/api/parse` answered HTTP 500
+  (`FUNCTION_INVOCATION_FAILED`) to every request, including the health check, so Quick add with
+  AI on always fell back to the offline parser. Vercel compiles each file of a function to
+  JavaScript on its own, and the package is an ES module, so Node resolves imports exactly as
+  written; the function's imports had no file extensions (`./_lib/config`), which only a bundler
+  resolves. Every local test imported the TypeScript through Vite, which hid it.
+- **How found.** The production smoke check (`npm run smoke -- <live url>`) after the first deploy.
+- **Fix.** Every relative import in the function and the two shared files it uses
+  (`src/parser/types.ts`, `src/domain/types.ts`) names its `.js` file, which TypeScript and Vite
+  map back to the `.ts` source.
+- **Regression test.** `tests/unit/api/esm-load.test.ts` compiles each file the way Vercel does and
+  loads the function with plain Node; without the fix it fails with `ERR_MODULE_NOT_FOUND`.
+
 ## Not bugs (investigated, behaviour kept)
 
 - `-0` as an age loads as `0`: JSON has no distinct negative zero, and the stored copy is clean.

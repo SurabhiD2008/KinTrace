@@ -2,7 +2,7 @@
 
 Family history is the cheapest screening input medicine has, and the most under-used: most people do not know which relatives matter, or that a published guideline already says when a family pattern should lead to a referral. KinTrace lets anyone draw their family tree, pick one of those guidelines (NICE CG164 for breast and ovarian cancer, Amsterdam II for Lynch syndrome, NICE CG71, the Dutch Lipid Clinic Network family-history item and NICE NG238 for early heart disease and familial hypercholesterolaemia) and see which referral criteria the family meets, with the relatives behind each finding ringed on the tree. It never gives a risk figure or a diagnosis, everything stays on the device, and the output is a one-page report to take to a doctor.
 
-Repository: https://github.com/SurabhiD2008/KinTrace. Live site: being deployed to Vercel; the address goes here once the production smoke check has passed against it.
+Live site: https://kintrace-beta.vercel.app. Repository: https://github.com/SurabhiD2008/KinTrace.
 
 | Home | Findings with evidence rings | One-page doctor report |
 | --- | --- | --- |
@@ -77,19 +77,19 @@ The table is generated from the guideline registry in `src/guidelines`; a unit t
 | Component | 134 | React Testing Library in jsdom; pages, dialogs, Quick add, the report |
 | Property-based | 17 | fast-check, 500 generated families per property, fixed seed |
 | Fuzz | 50 | hostile imports and hostile free text against the parser and the loader |
-| Serverless function | 46 | the parse function with scripted providers: timeouts, 429, 500, bad JSON, invented quotes, injected instructions |
+| Serverless function | 47 | the parse function with scripted providers: timeouts, 429, 500, bad JSON, invented quotes, injected instructions |
 | Browser, Chromium | 90 | Playwright with the guard; every flow, edge cases, the guard self-test, the PDF page count |
 | Browser, Firefox | 23 | the smoke, findings and report flows and the cross-browser edge tests |
 | Browser, WebKit | 23 | the same set as Firefox |
 | Browser, Chromium at 320, 390, 768, 1024, 1360 px | 130 | the main flows at each width (26 per width), in verify:final |
 
-Unit-suite total: 999. Line coverage 97.88% and branch coverage 91.28% over src/domain, src/guidelines and src/parser. Mutation score 78.4% (1377 of 1757 scored mutants killed, Stryker on the guideline rules and the relationship engine, run 2026-11-14).
+Unit-suite total: 1000. Line coverage 97.88% and branch coverage 91.28% over src/domain, src/guidelines and src/parser. Mutation score 78.4% (1377 of 1757 scored mutants killed, Stryker on the guideline rules and the relationship engine, run 2026-11-14).
 <!-- tests:end -->
 
 - One command, `npm run verify`, runs every check and prints PASS or FAIL for each: lint, types, unit tests with coverage thresholds (90% of lines and 85% of branches on the domain, guidelines and parser), build, browser tests, secret scan of the source, the build and the git history, dependency check, hygiene scan, documentation check (this README's numbers are produced or checked by it), bundle budget of 250 KB and the sample check. `npm run verify:final` adds three consecutive runs, the widths 320, 390, 768, 1024 and 1360, and a fresh-clone run.
 - Every browser test runs under a guard that fails it on a console error, a failed request, horizontal overflow, clipped text, a tap target under 44 px, an accessibility violation (axe), layout shift, a missing language attribute or lost focus. The guard has a self-test proving each check fires.
 - Age thresholds are tested at the limit and on either side of it. Property tests check that findings do not depend on the order people were added, that saving then loading returns the same tree, that adding an affected relative never lowers a status and that removing a triggering relative never raises one.
-- Testing found 15 bugs, each fixed with a test that failed first: silent data loss on save, two tabs overwriting each other, the report dated the wrong day in some time zones, an AI answer writing an unknown condition into the tree, and more. They are written up in [docs/BUGS_FOUND.md](docs/BUGS_FOUND.md).
+- Testing found 16 bugs, each fixed with a test that failed first: silent data loss on save, two tabs overwriting each other, the report dated the wrong day in some time zones, an AI answer writing an unknown condition into the tree, and the deployed parse function failing to load on Vercel, which only the production smoke check caught. They are written up in [docs/BUGS_FOUND.md](docs/BUGS_FOUND.md).
 
 ## Privacy and security
 
@@ -151,11 +151,11 @@ npx vercel --prod
 Then check the live site:
 
 ```bash
-npm run smoke -- https://your-deployment.vercel.app --full
+npm run smoke -- https://kintrace-beta.vercel.app --full
 ```
 
 ```bash
-BASE_URL=https://your-deployment.vercel.app npm run test:prod
+BASE_URL=https://kintrace-beta.vercel.app npm run test:prod
 ```
 
 ## Limitations and caveats

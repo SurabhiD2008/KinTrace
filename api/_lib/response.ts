@@ -1,5 +1,5 @@
-import { MAX_PARSE_ITEMS as MAX_ITEMS, UNPARSED_REASONS, aiResponseSchema, proposedEntrySchema } from '../../src/parser/types';
-import type { AiResponse, ProposedEntry, SourceSpan } from '../../src/parser/types';
+import { MAX_PARSE_ITEMS as MAX_ITEMS, UNPARSED_REASONS, aiResponseSchema, proposedEntrySchema } from '../../src/parser/types.js';
+import type { AiResponse, ProposedEntry, SourceSpan } from '../../src/parser/types.js';
 
 /** Where a quote sits in the text, or null when the model did not copy it exactly. */
 function spanOf(text: string, quote: unknown): SourceSpan | null {

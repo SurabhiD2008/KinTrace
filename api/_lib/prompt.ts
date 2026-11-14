@@ -1,5 +1,5 @@
-import { CONDITION_CODES, CONFIRMATIONS, SEXES } from '../../src/domain/types';
-import { AMBIGUITY_KINDS, MAX_INPUT_LENGTH, MAX_PARSE_ITEMS, RELATION_KEYS, SIDES, UNPARSED_REASONS } from '../../src/parser/types';
+import { CONDITION_CODES, CONFIRMATIONS, SEXES } from '../../src/domain/types.js';
+import { AMBIGUITY_KINDS, MAX_INPUT_LENGTH, MAX_PARSE_ITEMS, RELATION_KEYS, SIDES, UNPARSED_REASONS } from '../../src/parser/types.js';
 
 /** Changes whenever the prompt or the output schema changes; written to every call log line. */
 export const PROMPT_VERSION = 'parse-2026-11-12';

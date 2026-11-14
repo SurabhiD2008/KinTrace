@@ -24,6 +24,11 @@ jobs:
       - run: npx playwright install --with-deps chromium firefox webkit
       # Every check, including the browser suite in all three browsers.
       - run: npm run verify
+      # On failure, put the browser suite's failures in the job log itself, so they can be
+      # read on the run page without downloading the artifact.
+      - name: Show browser test failures
+        if: failure()
+        run: tail -n 400 .planning/logs/browsers.log || true
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

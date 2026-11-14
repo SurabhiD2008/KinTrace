@@ -1,6 +1,6 @@
-import type { ParserConfig, ProviderName } from './config';
-import { OUTPUT_SCHEMA, SYSTEM_PROMPT } from './prompt';
-import { isRecord } from './response';
+import type { ParserConfig, ProviderName } from './config.js';
+import { OUTPUT_SCHEMA, SYSTEM_PROMPT } from './prompt.js';
+import { isRecord } from './response.js';
 
 // A provider turns text into the model's raw JSON answer. The function tries the
 // configured providers in order; a provider that fails hands over to the next.

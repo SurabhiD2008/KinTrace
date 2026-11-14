@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CONDITION_CODES, CONFIRMATIONS, LIMITS, SEXES } from '../domain/types';
+import { CONDITION_CODES, CONFIRMATIONS, LIMITS, SEXES } from '../domain/types.js';
 
 // The one contract shared by the offline parser, the serverless AI parser,
 // the resolver and the Quick add UI. Every entry is a proposal: nothing here

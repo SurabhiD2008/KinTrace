@@ -1,15 +1,15 @@
-import { aiRequestSchema, MAX_INPUT_LENGTH } from '../src/parser/types';
-import type { AiErrorCode } from '../src/parser/types';
-import { loadConfig } from './_lib/config';
-import type { ParserConfig } from './_lib/config';
-import { createDailyBudget, createGate, createRateLimiter } from './_lib/limits';
-import type { DailyBudget, Gate, RateLimiter } from './_lib/limits';
-import { writeLog } from './_lib/log';
-import type { Logger } from './_lib/log';
-import { PROMPT_VERSION } from './_lib/prompt';
-import { MODEL_TIMEOUT_MS, providersFrom } from './_lib/providers';
-import type { ParserProvider, ProviderFailure } from './_lib/providers';
-import { isRecord, toGroundedResponse } from './_lib/response';
+import { aiRequestSchema, MAX_INPUT_LENGTH } from '../src/parser/types.js';
+import type { AiErrorCode } from '../src/parser/types.js';
+import { loadConfig } from './_lib/config.js';
+import type { ParserConfig } from './_lib/config.js';
+import { createDailyBudget, createGate, createRateLimiter } from './_lib/limits.js';
+import type { DailyBudget, Gate, RateLimiter } from './_lib/limits.js';
+import { writeLog } from './_lib/log.js';
+import type { Logger } from './_lib/log.js';
+import { PROMPT_VERSION } from './_lib/prompt.js';
+import { MODEL_TIMEOUT_MS, providersFrom } from './_lib/providers.js';
+import type { ParserProvider, ProviderFailure } from './_lib/providers.js';
+import { isRecord, toGroundedResponse } from './_lib/response.js';
 
 // The one optional serverless function. It turns free text into proposed
 // family-tree entries with a hosted model, validates every entry against the
@@ -17,10 +17,10 @@ import { isRecord, toGroundedResponse } from './_lib/response';
 // back the user's text, and every refusal is generic. The browser falls back to
 // the offline parser on any error. GET answers a status-only health check.
 
-export { createRateLimiter } from './_lib/limits';
-export { MODEL_TIMEOUT_MS, NVIDIA_URL } from './_lib/providers';
-export { SYSTEM_PROMPT } from './_lib/prompt';
-export { toResponse } from './_lib/response';
+export { createRateLimiter } from './_lib/limits.js';
+export { MODEL_TIMEOUT_MS, NVIDIA_URL } from './_lib/providers.js';
+export { SYSTEM_PROMPT } from './_lib/prompt.js';
+export { toResponse } from './_lib/response.js';
 
 export const config = { runtime: 'nodejs', maxDuration: 15 };
 

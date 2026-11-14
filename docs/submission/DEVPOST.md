@@ -42,7 +42,7 @@ KinTrace lets you draw your family tree, or describe it in a sentence, pick a pu
 - **Guidelines disagree.** The same father counts under one guideline and not another. Rather than hide that, we made it a feature: the comparison view shows each guideline's threshold and who it counted.
 - **Trusting a model's output.** Models invent things. The parse function checks every quoted phrase against the user's text, refuses an answer when most entries fail that check, and the user still confirms each entry.
 - **Privacy you can test.** "Nothing leaves your device" is easy to claim. We wrote a browser test that runs the whole flow and fails on any request to another origin, self-hosted the fonts, and shipped a strict Content-Security-Policy.
-- **Edge cases.** Testing found 15 real bugs, including two browser tabs silently overwriting each other's tree, blocked storage reported as saved, a double click adding two people, the report dated the wrong day in some time zones, and an adopted user being told to "add your parents".
+- **Edge cases.** Testing found 16 real bugs, including two browser tabs silently overwriting each other's tree, blocked storage reported as saved, a double click adding two people, the report dated the wrong day in some time zones, and an adopted user being told to "add your parents".
 
 ### Accomplishments that we're proud of
 
@@ -77,5 +77,5 @@ TypeScript, React, Vite, React Router, Zustand, zod, Vitest, Testing Library, fa
 
 ## Try it out
 
-- Live site: add the production address here after `vercel --prod` and the production smoke check
+- Live site: https://kintrace-beta.vercel.app
 - Code: https://github.com/SurabhiD2008/KinTrace
