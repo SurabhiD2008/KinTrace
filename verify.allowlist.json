@@ -3,12 +3,6 @@
   "entries": [
     {
       "check": "todo",
-      "file": "CLAUDE.md",
-      "line": "(e) No placeholder text, no TODO left in shipped code.",
-      "reason": "The working rule that forbids TODO comments names the word itself."
-    },
-    {
-      "check": "todo",
       "file": "scripts/verify/checks-hygiene.mjs",
       "line": "['todo', (file) => isCode(file) || file.endsWith('.md'), /\\b(TODO|FIXME|HACK|XXX)\\b/],",
       "reason": "The hygiene scanner's own pattern for this rule; it has to name what it looks for."

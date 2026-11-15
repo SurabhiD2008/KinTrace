@@ -98,7 +98,7 @@ function isAllowed(hit) {
 
 export async function hygiene() {
   const files = trackedFiles().filter((file) => existsSync(file) && (TEXT.test(file) || MEDIA.test(file)));
-  const scanned = files.filter((file) => !['Builds_skills.md', 'Fable.md', 'package-lock.json'].includes(file) && TEXT.test(file));
+  const scanned = files.filter((file) => !file !== 'package-lock.json' && TEXT.test(file));
   const hits = [...lineHits(scanned), ...fileHits(files), ...(await functionHits())];
   const open = hits.filter((hit) => !isAllowed(hit));
   const excepted = hits.length - open.length;

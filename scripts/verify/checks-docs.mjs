@@ -74,7 +74,7 @@ function variables(problems) {
 
 function commands(problems) {
   const scripts = JSON.parse(read('package.json')).scripts;
-  for (const file of ['README.md', 'CLAUDE.md']) {
+  for (const file of ['README.md']) {
     for (const match of read(file).matchAll(/npm run ([\w:-]+)/g)) {
       if (!(match[1] in scripts)) problems.push(`${file} mentions npm run ${match[1]}, which is not a script`);
     }
@@ -82,7 +82,7 @@ function commands(problems) {
 }
 
 function links(problems) {
-  const docs = trackedFiles().filter((file) => file.endsWith('.md') && !['Builds_skills.md', 'Fable.md'].includes(file));
+  const docs = trackedFiles().filter((file) => file.endsWith('.md'));
   for (const file of docs) {
     for (const match of read(file).matchAll(/\]\(([^)\s]+)\)/g)) {
       const target = match[1];

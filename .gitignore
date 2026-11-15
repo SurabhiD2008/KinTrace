@@ -34,3 +34,8 @@ reports/
 # local key files kept by the owner (never committed)
 API Keys.txt
 *.key
+
+# the owner's private build instructions (kept on this machine, never committed)
+CLAUDE.md
+Fable.md
+Builds_skills.md
