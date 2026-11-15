@@ -8,16 +8,16 @@
 <link rel="stylesheet" href="../../src/styles/tokens.css">
 <style>
   @font-face {
-    font-family: 'Barlow Condensed';
-    font-weight: 700;
+    font-family: 'Fraunces Variable';
+    font-weight: 100 900;
     font-display: block;
-    src: url('../../node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-700-normal.woff2') format('woff2');
+    src: url('../../node_modules/@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2') format('woff2-variations');
   }
   @font-face {
-    font-family: 'Barlow Condensed';
-    font-weight: 600;
+    font-family: 'Atkinson Hyperlegible Next Variable';
+    font-weight: 200 800;
     font-display: block;
-    src: url('../../node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-600-normal.woff2') format('woff2');
+    src: url('../../node_modules/@fontsource-variable/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-wght-normal.woff2') format('woff2-variations');
   }
   @page { size: A4; margin: 0; }
   * { box-sizing: border-box; }
@@ -35,9 +35,7 @@
     height: 297mm;
     overflow: hidden;
     padding: 8mm 10mm 7mm;
-    background-color: var(--color-paper);
-    background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
-    background-size: var(--grid-size) var(--grid-size);
+    background: var(--color-paper);
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
@@ -49,31 +47,27 @@
     margin: 0;
     line-height: 1.05;
   }
-  h1 { font-size: 30pt; color: var(--color-blue); }
-  h2 { font-size: 12.5pt; margin-bottom: var(--space-1); text-transform: uppercase; }
+  h1 { font-size: 28pt; }
+  h2 { font-size: 12pt; margin-bottom: var(--space-1); }
   p { margin: 0 0 var(--space-1); }
   ul { margin: 0; padding-left: 1.1em; }
   li { margin-bottom: 2px; }
   header { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-4); }
-  .tagline { font-family: var(--font-heading); font-weight: 600; font-size: 13pt; margin-top: 2px; }
+  .tagline { font-family: var(--font-heading); font-weight: 500; font-size: 12pt; margin-top: 2px; }
   .event { text-align: right; font-size: 7.6pt; color: var(--color-muted); }
   .card {
     background: var(--color-card);
-    border: var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    border: var(--rule);
+    border-radius: var(--radius-sheet);
     padding: var(--space-2) var(--space-3);
   }
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
   .sticker {
     display: inline-block;
-    border: var(--border);
-    border-radius: var(--radius);
-    font-family: var(--font-heading);
-    font-weight: var(--heading-weight);
-    font-size: 8pt;
+    border-radius: 2px 6px 3px 7px;
+    font-weight: 700;
+    font-size: 7.6pt;
     letter-spacing: var(--sticker-tracking);
-    text-transform: uppercase;
     padding: 0 var(--space-1);
     line-height: 1.5;
   }
@@ -83,8 +77,8 @@
   .unknown { background: var(--status-unknown); }
   .flow { display: flex; align-items: center; flex-wrap: nowrap; gap: 3px; margin: var(--space-1) 0; }
   .node {
-    border: var(--border);
-    border-radius: var(--radius);
+    border: 1px solid var(--color-ink);
+    border-radius: var(--radius-sheet);
     background: var(--color-card);
     padding: 2px 5px;
     font-size: 7.4pt;
@@ -99,7 +93,7 @@
   .arrow { font-weight: 700; color: var(--color-blue); flex: 0 0 auto; }
   .caption { font-size: 7.6pt; color: var(--color-muted); margin-top: 2px; }
   .numbers { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); margin: var(--space-1) 0 var(--space-2); }
-  .num { border: var(--border); border-radius: var(--radius); background: var(--color-paper); text-align: center; padding: 2px 0; }
+  .num { border: var(--rule); border-radius: var(--radius-sheet); background: var(--color-paper); text-align: center; padding: 2px 0; }
   .num b { font-family: var(--font-heading); font-size: 16pt; display: block; color: var(--color-blue); line-height: 1.1; }
   .num span { font-size: 7.2pt; }
   .links { display: flex; justify-content: space-between; gap: var(--space-4); font-size: 8.4pt; }
@@ -175,7 +169,7 @@
   <section class="card">
     <h2>Validation</h2>
     <div class="numbers">
-      <div class="num"><b data-fill="unit">1002</b><span>unit, component, property and fuzz tests</span></div>
+      <div class="num"><b data-fill="unit">1007</b><span>unit, component, property and fuzz tests</span></div>
       <div class="num"><b data-fill="browser">267</b><span>browser tests across Chromium, Firefox, WebKit and five widths</span></div>
       <div class="num"><b data-fill="mutation">78.4%</b><span>mutation score on the guideline rules</span></div>
       <div class="num"><b data-fill="bugs">16</b><span>bugs found by testing, each fixed with a test</span></div>

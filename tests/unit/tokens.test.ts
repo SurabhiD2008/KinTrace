@@ -22,18 +22,19 @@ function contrast(a: string, b: string): number {
   return (hi + 0.05) / (lo + 0.05);
 }
 
-// The palette is fixed by the design brief (docs/DESIGN.md).
+// The palette documented in docs/design-tokens.md.
 const palette = {
-  paper: '#f4ecdc',
-  card: '#fffbf2',
-  ink: '#17163f',
-  blue: '#2b2d8f',
-  coral: '#ff7a59',
-  mustard: '#f4c542',
-  mint: '#9adbc0',
-  magenta: '#b0307a',
-  muted: '#3c3b66',
-  tan: '#cbbf9f',
+  paper: '#eef2ec',
+  card: '#fbfcfa',
+  ink: '#14212b',
+  blue: '#1f3fbf',
+  coral: '#ff9f7d',
+  mustard: '#ffd84a',
+  mint: '#a5e0c2',
+  magenta: '#a8245f',
+  muted: '#45535e',
+  tan: '#d3d8d0',
+  rule: '#c3ccc4',
 } as const;
 
 describe('design tokens', () => {
@@ -41,12 +42,12 @@ describe('design tokens', () => {
     expect(token(`color-${name}`).toLowerCase()).toBe(hex);
   });
 
-  it('keeps the card and button shape from the brief', () => {
+  it('keeps the sheet and control shape from the design', () => {
     expect(token('border')).toBe('var(--border-width) solid var(--color-ink)');
-    expect(token('border-width')).toBe('2px');
-    expect(token('radius')).toBe('4px');
-    expect(token('shadow')).toBe('4px 4px 0 var(--color-ink)');
-    expect(token('shadow-pressed')).toBe('2px 2px 0 var(--color-ink)');
+    expect(token('border-width')).toBe('1.5px');
+    expect(token('rule')).toBe('1px solid var(--color-rule)');
+    expect(token('radius')).toBe('8px');
+    expect(token('radius-sheet')).toBe('2px');
     expect(token('focus-ring')).toBe('3px solid var(--color-blue)');
     expect(token('focus-offset')).toBe('2px');
     expect(token('touch-target')).toBe('44px');
@@ -61,6 +62,10 @@ describe('design tokens', () => {
     ['ink', 'tan'],
     ['muted', 'paper'],
     ['muted', 'card'],
+    ['muted', 'tan'],
+    ['card', 'ink'],
+    ['tan', 'ink'],
+    ['magenta', 'card'],
     ['card', 'blue'],
     ['blue', 'paper'],
     ['blue', 'card'],

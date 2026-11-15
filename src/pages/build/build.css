@@ -27,7 +27,7 @@
 
 .kt-field label,
 .kt-choices legend {
-  font-weight: 700;
+  font-weight: 650;
 }
 
 .kt-field input,
@@ -41,6 +41,12 @@
   border-radius: var(--radius);
   background-color: var(--color-card);
   color: var(--color-ink);
+}
+
+.kt-field input:hover:not(:disabled),
+.kt-field select:hover:not(:disabled),
+.kt-build textarea:hover:not(:disabled) {
+  border-color: var(--color-blue);
 }
 
 .kt-field input:disabled,
@@ -104,9 +110,8 @@
   align-items: flex-end;
   gap: var(--space-4);
   padding: var(--space-4);
-  border: var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  border: var(--rule);
+  border-radius: var(--radius-sheet);
   background: var(--color-card);
 }
 
@@ -144,8 +149,8 @@
 
 .kt-start__option {
   padding: var(--space-4);
-  border: var(--border);
-  border-radius: var(--radius);
+  border: var(--rule);
+  border-radius: var(--radius-sheet);
   background: var(--color-paper);
 }
 
@@ -159,9 +164,8 @@
 
 .kt-drawer {
   padding: var(--space-4);
-  border: var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  border: var(--rule);
+  border-radius: var(--radius-sheet);
   background: var(--color-card);
 }
 
@@ -173,16 +177,17 @@
 }
 
 .kt-drawer__head h2 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   overflow-wrap: anywhere;
 }
 
 .kt-drawer__issues {
   margin: 0 0 var(--space-4);
   padding: var(--space-3) var(--space-3) var(--space-3) var(--space-6);
-  border: var(--border);
-  border-radius: var(--radius);
-  background: var(--color-mustard);
+  border: var(--rule);
+  border-left: 6px solid var(--color-mustard);
+  border-radius: var(--radius-sheet);
+  background: var(--color-card);
 }
 
 .kt-drawer__conditions {
@@ -194,25 +199,25 @@
 .kt-condition fieldset {
   margin: 0 0 var(--space-4);
   padding: var(--space-3);
-  border: var(--border);
-  border-radius: var(--radius);
+  border: var(--rule);
+  border-radius: var(--radius-sheet);
   background: var(--color-paper);
 }
 
 .kt-condition legend {
   padding: 0 var(--space-2);
-  font-weight: 700;
+  font-weight: 650;
 }
 
 .kt-drawer__add {
   padding-top: var(--space-3);
-  border-top: var(--border);
+  border-top: var(--rule);
 }
 
 .kt-drawer__danger {
   margin-top: var(--space-5);
   padding-top: var(--space-4);
-  border-top: var(--border-dashed);
+  border-top: 1px dashed var(--color-ink);
 }
 
 .kt-build__footer {
@@ -248,9 +253,10 @@
     z-index: 20;
     max-height: 62vh;
     overflow: auto;
-    border-width: 3px 0 0;
-    border-radius: 0;
-    box-shadow: none;
+    border: 0;
+    border-top: var(--border);
+    border-radius: var(--radius) var(--radius) 0 0;
+    box-shadow: var(--shadow-float);
   }
 
   .kt-build__main--drawer {

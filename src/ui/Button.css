@@ -8,35 +8,46 @@
   padding: var(--space-2) var(--space-4);
   border: var(--border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
   background: var(--color-card);
   color: var(--color-ink);
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 650;
   line-height: 1.2;
   cursor: pointer;
-  transition:
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast);
+  /* Colours switch at once: a half-way colour mid-transition can dip below contrast. */
+  transition: transform var(--transition-fast);
+}
+
+.kt-button:hover:not(:disabled):not([aria-disabled='true']):not([aria-pressed='true']) {
+  background: var(--color-tan);
 }
 
 .kt-button--primary {
+  border-color: var(--color-blue);
   background: var(--color-blue);
   color: var(--color-card);
 }
 
-.kt-button:active:not(:disabled):not([aria-disabled='true']),
+.kt-button--primary:hover:not(:disabled):not([aria-disabled='true']):not([aria-pressed='true']) {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+}
+
+.kt-button:active:not(:disabled):not([aria-disabled='true']) {
+  transform: translateY(1px);
+}
+
 .kt-button[aria-pressed='true'] {
-  transform: translate(var(--press-shift), var(--press-shift));
-  box-shadow: var(--shadow-pressed);
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-card);
 }
 
 .kt-button:disabled,
 .kt-button[aria-disabled='true'] {
+  border-style: dashed;
   background: var(--color-tan);
   color: var(--color-ink);
-  border-style: dashed;
-  box-shadow: none;
   cursor: not-allowed;
 }

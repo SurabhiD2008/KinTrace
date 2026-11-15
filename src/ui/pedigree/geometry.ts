@@ -1,8 +1,8 @@
 import { NODE_SIZE } from './layout';
 
 export const HALF = NODE_SIZE / 2;
-/** A 3px gap, then the centre of a 3px line. */
-export const RING_OFFSET = 4.5;
+/** The width of the highlighter band between a symbol and its evidence ring. */
+export const RING_OFFSET = 6;
 
 /** Splits a long name over two lines so neighbours' labels do not collide. */
 export function nameLines(name: string): string[] {

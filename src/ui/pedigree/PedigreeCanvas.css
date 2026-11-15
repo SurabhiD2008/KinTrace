@@ -20,7 +20,7 @@
 }
 
 .kt-canvas__actions-label {
-  font-weight: 700;
+  font-weight: 650;
 }
 
 .kt-canvas__hint {
@@ -31,10 +31,10 @@
 
 .kt-canvas__viewport {
   height: clamp(320px, 56vh, 640px);
-  border: var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  background: var(--color-card);
+  border: var(--rule);
+  border-radius: var(--radius-sheet);
+  /* Chart paper: the tree is always drawn on the grid. */
+  background: var(--chart-grid), var(--color-card);
   overflow: hidden;
   cursor: grab;
   /* The tree handles its own panning; stop the browser scrolling it instead. */
@@ -53,7 +53,9 @@
 .kt-line {
   fill: none;
   stroke: var(--color-ink);
-  stroke-width: 2;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .kt-line--dashed {
@@ -77,7 +79,7 @@
 .kt-node__symbol {
   fill: var(--color-card);
   stroke: var(--color-ink);
-  stroke-width: 2;
+  stroke-width: 1.75;
 }
 
 .kt-node__symbol--unknown-history {
@@ -86,7 +88,8 @@
 }
 
 .kt-node__symbol--selected {
-  fill: var(--color-mint);
+  fill: var(--color-card);
+  stroke: var(--color-blue);
   stroke-width: 4;
 }
 
@@ -109,14 +112,16 @@
 .kt-node__mark {
   fill: none;
   stroke: var(--color-ink);
-  stroke-width: 2;
+  stroke-width: 1.75;
+  stroke-linecap: round;
 }
 
-/* Evidence ring: a 3px ink line with a 3px paper gap inside it. */
+/* Evidence ring: a band of highlighter around the symbol with an ink line outside it,
+   so the ring still reads as a second outline when printed without colour. */
 .kt-node__evidence {
-  fill: var(--color-paper);
+  fill: var(--color-mustard);
   stroke: var(--color-ink);
-  stroke-width: 3;
+  stroke-width: 1.75;
 }
 
 .kt-node__focus {
@@ -135,7 +140,7 @@
   fill: var(--color-ink);
   font-family: var(--font-body);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 650;
 }
 
 .kt-node__condition {
@@ -168,8 +173,8 @@
   gap: var(--space-2) var(--space-4);
   margin: var(--space-3) 0 0;
   padding: var(--space-4);
-  border: var(--border);
-  border-radius: var(--radius);
+  border: var(--rule);
+  border-radius: var(--radius-sheet);
   background: var(--color-card);
   list-style: none;
 }

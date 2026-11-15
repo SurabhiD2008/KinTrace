@@ -1,33 +1,20 @@
-/* Barlow Condensed, bundled from @fontsource/barlow-condensed (Latin subset only).
-   font-display: optional: the font is used only if it is ready for the first paint, so
-   headings never re-wrap and push the page down when it arrives late. */
+/* Both typefaces are bundled (Latin subset), so the app makes no request to any other site.
+   font-display: optional: a face is used only if it is ready for the first paint, so text
+   never re-wraps and pushes the page down when it arrives late. */
 
 @font-face {
-  font-family: 'Barlow Condensed';
+  font-family: 'Fraunces Variable';
   font-style: normal;
-  font-weight: 500;
+  font-weight: 100 900;
   font-display: optional;
-  src:
-    url('@fontsource/barlow-condensed/files/barlow-condensed-latin-500-normal.woff2') format('woff2'),
-    url('@fontsource/barlow-condensed/files/barlow-condensed-latin-500-normal.woff') format('woff');
+  src: url('@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2') format('woff2-variations');
 }
 
 @font-face {
-  font-family: 'Barlow Condensed';
+  font-family: 'Atkinson Hyperlegible Next Variable';
   font-style: normal;
-  font-weight: 600;
+  font-weight: 200 800;
   font-display: optional;
-  src:
-    url('@fontsource/barlow-condensed/files/barlow-condensed-latin-600-normal.woff2') format('woff2'),
-    url('@fontsource/barlow-condensed/files/barlow-condensed-latin-600-normal.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Barlow Condensed';
-  font-style: normal;
-  font-weight: 700;
-  font-display: optional;
-  src:
-    url('@fontsource/barlow-condensed/files/barlow-condensed-latin-700-normal.woff2') format('woff2'),
-    url('@fontsource/barlow-condensed/files/barlow-condensed-latin-700-normal.woff') format('woff');
+  src: url('@fontsource-variable/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-wght-normal.woff2')
+    format('woff2-variations');
 }

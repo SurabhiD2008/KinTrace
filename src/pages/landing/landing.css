@@ -3,10 +3,9 @@
   overflow-x: clip;
 }
 
-/* Ticker */
+/* Ticker: a thin running line of the standing assurances. */
 .kt-ticker {
   overflow: hidden;
-  border-bottom: var(--border);
   background: var(--color-ink);
   color: var(--color-card);
 }
@@ -14,14 +13,14 @@
 .kt-ticker__track {
   display: flex;
   width: max-content;
-  animation: kt-ticker 40s linear infinite;
+  animation: kt-ticker 60s linear infinite;
 }
 
 .kt-ticker__item {
-  padding: var(--space-2) var(--space-6);
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: var(--sticker-tracking);
+  padding: var(--space-1) var(--space-6);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   white-space: nowrap;
 }
 
@@ -43,20 +42,15 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-3);
-  max-width: 1280px;
+  gap: var(--space-2) var(--space-4);
+  max-width: var(--wide-width);
   margin: 0 auto;
-  padding: var(--space-4);
+  padding: var(--space-3) var(--space-4);
 }
 
 .kt-landing__logo {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--touch-target);
   margin: 0;
-  color: var(--color-ink);
-  font-size: 2.5rem;
-  text-decoration: none;
+  font-size: 1.625rem;
 }
 
 .kt-landing__links,
@@ -64,12 +58,22 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-1) var(--space-4);
+  gap: var(--space-1) var(--space-5);
+}
+
+.kt-landing__actions {
+  gap: var(--space-3);
 }
 
 .kt-landing__links a {
   color: var(--color-ink);
-  font-weight: 700;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.kt-landing__links a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
 /* Hero */
@@ -78,44 +82,47 @@
   grid-template-columns: minmax(0, 1fr);
   gap: var(--space-7);
   align-items: center;
-  max-width: 1280px;
+  max-width: var(--wide-width);
   margin: 0 auto;
-  padding: var(--space-6) var(--space-4) var(--space-7);
+  padding: var(--space-6) var(--space-4) var(--space-8);
 }
 
 .kt-hero__title {
-  margin: 0 0 var(--space-4);
-  font-size: clamp(2.5rem, 5.2vw + 1rem, 5.875rem);
-  line-height: 0.98;
+  margin: 0 0 var(--space-5);
+  font-size: clamp(2.5rem, 3.6vw + 1.25rem, 4.5rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+  /* The headline never breaks a word with a hyphen; a too-long word wraps whole. */
+  hyphens: manual;
   overflow-wrap: break-word;
 }
 
+/* The marked phrase: one pass of the highlighter, a little short of the line's full height. */
 .kt-hero__mark {
-  padding: 0 0.08em;
-  background: var(--color-mustard);
+  padding: 0 0.12em;
+  border-radius: 0.08em 0.3em 0.12em 0.34em;
+  background: linear-gradient(transparent 14%, var(--color-mustard) 14%, var(--color-mustard) 90%, transparent 90%);
   color: var(--color-ink);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
 
 .kt-hero__sub {
-  max-width: 34em;
-  font-size: 1.25rem;
+  max-width: 32em;
+  margin-bottom: var(--space-5);
+  color: var(--color-muted);
+  font-size: 1.1875rem;
 }
 
+/* The chart: the sample family on drafting paper, with the finding laid on its corner. */
 .kt-hero__plate {
   position: relative;
   margin: 0;
-  padding: var(--space-4);
-  border: var(--border);
-  box-shadow: var(--shadow);
-  background: var(--color-card);
-  transform: rotate(1.5deg);
-}
-
-.kt-hero__fig {
-  margin: 0 0 var(--space-2);
-  font-size: 1.5rem;
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  border: var(--rule);
+  border-radius: var(--radius-sheet);
+  background: var(--chart-grid), var(--color-card);
 }
 
 .kt-hero__tree {
@@ -125,130 +132,281 @@
   aspect-ratio: 4 / 3;
 }
 
-.kt-hero__plate figcaption {
-  margin-top: var(--space-2);
-  color: var(--color-muted);
-  font-size: 0.875rem;
+.kt-generation {
+  fill: var(--color-muted);
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-style: italic;
 }
 
+.kt-hero__plate figcaption {
+  padding-top: var(--space-3);
+  border-top: var(--rule);
+  color: var(--color-muted);
+  font-size: var(--text-small);
+}
+
+.kt-hero__fig {
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+/* The note pinned to the chart's corner: one swipe of the coral marker. */
 .kt-hero__sticker {
   position: absolute;
-  top: calc(-1 * var(--space-6));
-  right: calc(-1 * var(--space-2));
-  display: grid;
-  place-items: center;
-  width: 112px;
-  height: 112px;
+  top: calc(-1 * var(--space-3));
+  right: var(--space-4);
   margin: 0;
-  padding: var(--space-3);
-  border: var(--border);
-  border-radius: 50%;
-  box-shadow: var(--shadow);
+  padding: var(--space-1) var(--space-3);
+  border-radius: 3px 10px 4px 11px;
   background: var(--color-coral);
   color: var(--color-ink);
-  font-size: 1.25rem;
-  line-height: 1;
-  text-align: center;
-  transform: rotate(-12deg);
+  font-size: var(--text-small);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transform: rotate(2deg);
 }
 
-/* Trust strip */
+/* The one moment of motion: the lines trace in, then the highlighter lands on the evidence. */
+@media (prefers-reduced-motion: no-preference) {
+  .kt-hero__tree path.kt-line,
+  .kt-hero__tree .kt-line > * {
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    animation: kt-trace 1200ms var(--ease) 150ms forwards;
+  }
+
+  .kt-hero__tree .kt-node__evidence {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: kt-ring 420ms var(--ease) 1050ms backwards;
+  }
+
+  .kt-hero__sticker {
+    animation: kt-slip 420ms var(--ease) 1250ms backwards;
+  }
+}
+
+@keyframes kt-trace {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes kt-ring {
+  from {
+    transform: scale(0.55);
+  }
+}
+
+@keyframes kt-slip {
+  from {
+    transform: translateY(-10px) rotate(0deg);
+  }
+}
+
+/* Trust: three margin notes on one ruled row. */
 .kt-trust {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  border-top: var(--border);
-  border-bottom: var(--border);
-  background: var(--color-card);
+  max-width: var(--wide-width);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
 }
 
 .kt-trust__item {
-  padding: var(--space-5) var(--space-4);
-  border-right: var(--border);
-}
-
-.kt-trust__item:last-child {
-  border-right: 0;
+  padding: var(--space-5) var(--space-5) var(--space-5) 0;
+  border-top: var(--border);
 }
 
 .kt-trust__title {
-  margin-bottom: var(--space-2);
-  font-size: 1.75rem;
+  margin-bottom: var(--space-1);
+  font-size: 1.3125rem;
 }
 
 .kt-trust__item p {
   margin: 0;
+  color: var(--color-muted);
 }
 
 /* Sections */
 .kt-section {
-  max-width: 1280px;
+  max-width: var(--wide-width);
   margin: 0 auto;
-  padding: var(--space-7) var(--space-4);
+  padding: var(--space-8) var(--space-4) 0;
+  scroll-margin-top: var(--space-4);
 }
 
 .kt-section > h2,
 .kt-band h2 {
-  font-size: clamp(2.25rem, 3vw + 1rem, 4rem);
+  margin-bottom: var(--space-6);
+  font-size: clamp(1.875rem, 1.8vw + 1.25rem, 2.75rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 
 .kt-landing__label {
   margin: 0 0 var(--space-2);
-  font-weight: 700;
-  letter-spacing: var(--sticker-tracking);
-  text-transform: uppercase;
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  font-weight: 600;
 }
 
+.kt-band .kt-landing__label {
+  color: var(--color-tan);
+}
+
+/* How it works: three siblings hanging from one line of descent. */
 .kt-how {
+  --symbol: 48px;
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--space-5);
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.kt-how__number {
-  display: block;
-  margin-bottom: var(--space-2);
-  color: transparent;
-  font-size: 6rem;
-  line-height: 0.9;
-  -webkit-text-stroke: var(--border-width) var(--color-ink);
+.kt-how::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: var(--space-8);
+  left: calc(var(--symbol) / 2);
+  border-left: var(--border);
 }
 
-@media (min-width: 900px) {
-  /* Staggered: each card sits a little lower than the one before. */
-  .kt-how__card:nth-child(2) {
-    margin-top: var(--space-6);
-  }
-
-  .kt-how__card:nth-child(3) {
-    margin-top: var(--space-7);
-  }
-}
-
-.kt-checks {
+.kt-how__card {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--space-5);
+  grid-template-columns: var(--symbol) minmax(0, 1fr);
+  column-gap: var(--space-4);
 }
 
-.kt-checks ul {
+.kt-how__card > :not(.kt-how__number) {
+  grid-column: 2;
+}
+
+.kt-how__card h3 {
+  margin: var(--space-2) 0 var(--space-1);
+  font-size: 1.5rem;
+}
+
+.kt-how__card p {
   margin: 0;
-  padding-left: var(--space-4);
+  max-width: 28em;
+  color: var(--color-muted);
+}
+
+/* The step number sits in a pedigree symbol: square, circle, diamond. */
+.kt-how__number {
+  position: relative;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  grid-row: 1 / span 2;
+  align-self: start;
+  width: var(--symbol);
+  height: var(--symbol);
+  margin: 0;
+  font-size: 1.375rem;
+}
+
+.kt-how__number::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: var(--border);
+  background: var(--color-card);
+}
+
+.kt-how__card:nth-child(2) .kt-how__number::before {
+  border-radius: 50%;
+  background: var(--color-mustard);
+}
+
+.kt-how__card:nth-child(3) .kt-how__number::before {
+  inset: 6px;
+  transform: rotate(45deg);
+}
+
+@media (min-width: 760px) {
+  .kt-how {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding-top: var(--space-6);
+  }
+
+  /* The sibling bar runs from the first symbol's centre to the last one's. */
+  .kt-how::before {
+    bottom: auto;
+    width: calc((100% + var(--space-6)) * 2 / 3);
+    border-top: var(--border);
+    border-left: 0;
+  }
+
+  .kt-how__card {
+    display: block;
+  }
+
+  .kt-how__card::before {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--space-6));
+    left: calc(var(--symbol) / 2);
+    height: var(--space-6);
+    border-left: var(--border);
+  }
+
+  .kt-how__card h3 {
+    margin-top: var(--space-4);
+  }
+}
+
+/* What it checks: ruled rows, the condition on the left and its guidelines on the right. */
+.kt-checks__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-1) var(--space-6);
+  padding: var(--space-5) 0;
+  border-top: var(--rule);
+}
+
+.kt-checks__row:first-child {
+  border-top: var(--border);
+}
+
+.kt-checks__row h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.kt-checks__row p,
+.kt-checks__row ul {
+  margin: 0;
+  max-width: 44em;
+  padding: 0;
+  list-style: none;
+  font-size: 1.0625rem;
 }
 
 .kt-checks__next {
-  padding: var(--space-5);
-  border: var(--border-dashed);
-  border-radius: var(--radius);
-  background: var(--color-paper);
+  border-top: 1px dashed var(--color-ink);
+  border-bottom: 1px dashed var(--color-ink);
+  color: var(--color-muted);
 }
 
-/* Guidelines band */
+@media (min-width: 760px) {
+  .kt-checks__row {
+    grid-template-columns: 220px minmax(0, 1fr);
+    align-items: baseline;
+  }
+}
+
+/* Guidelines band: the page's one dark sheet. */
 .kt-band {
-  border-top: var(--border);
-  border-bottom: var(--border);
+  margin-top: var(--space-8);
   background: var(--color-ink);
   color: var(--color-card);
 }
@@ -257,17 +415,25 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--space-6);
-  max-width: 1280px;
+  max-width: var(--wide-width);
   margin: 0 auto;
-  padding: var(--space-7) var(--space-4);
+  padding: var(--space-8) var(--space-4);
+}
+
+.kt-band h2 {
+  margin-bottom: var(--space-4);
+}
+
+.kt-band__inner > div > p {
+  max-width: 30em;
+  margin: 0;
+  font-size: 1.0625rem;
 }
 
 .kt-band__card {
   overflow-x: auto;
-  padding: var(--space-4);
-  border: var(--border);
-  border-color: var(--color-card);
-  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-sheet);
   background: var(--color-card);
   color: var(--color-ink);
 }
@@ -282,111 +448,159 @@
 }
 
 .kt-band__table caption {
-  margin-bottom: var(--space-2);
-  font-weight: 700;
+  margin-bottom: var(--space-3);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: var(--heading-weight);
   text-align: left;
 }
 
 .kt-band__table th,
 .kt-band__table td {
-  padding: var(--space-2);
-  border-top: var(--border);
+  padding: var(--space-3) var(--space-2) var(--space-3) 0;
+  border-top: var(--rule);
   text-align: left;
   vertical-align: top;
 }
 
-/* Promises */
+.kt-band__table thead th {
+  border-top: 0;
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+/* Promises: struck through with the marker. */
 .kt-promises {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--space-5);
+  gap: var(--space-6);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .kt-promises__title {
-  font-size: 2rem;
+  font-size: 1.625rem;
 }
 
 .kt-promises__title s {
-  text-decoration-color: var(--color-magenta);
-  text-decoration-thickness: 4px;
+  text-decoration-color: var(--color-coral);
+  text-decoration-thickness: 0.22em;
 }
 
-/* FAQ */
+.kt-promises p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+/* FAQ: ruled rows that open. */
 .kt-faq {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  max-width: 52rem;
+  max-width: 46rem;
+  border-bottom: var(--rule);
 }
 
 .kt-faq__item {
-  border: var(--border);
-  border-radius: var(--radius);
-  background: var(--color-card);
+  border-top: var(--rule);
+}
+
+.kt-faq__item:first-child {
+  border-top: var(--border);
 }
 
 .kt-faq__item summary {
   display: flex;
   align-items: center;
-  min-height: var(--touch-target);
-  padding: var(--space-2) var(--space-4);
-  font-weight: 700;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 56px;
+  padding: var(--space-2) 0;
+  font-size: 1.125rem;
+  font-weight: 650;
+  list-style: none;
   cursor: pointer;
 }
 
+.kt-faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.kt-faq__item summary::after {
+  content: '+';
+  flex: none;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+}
+
+.kt-faq__item[open] summary::after {
+  transform: rotate(45deg);
+}
+
 .kt-faq__item > :not(summary) {
+  max-width: 40em;
   margin: 0;
-  padding: 0 var(--space-4) var(--space-3);
+  padding: 0 0 var(--space-4);
 }
 
 /* Footer */
 .kt-landing__footer {
-  padding: var(--space-6) var(--space-4) var(--space-7);
-  border-top: var(--border);
+  margin-top: var(--space-9);
+  padding: var(--space-7) var(--space-4) var(--space-6);
   background: var(--color-ink);
   color: var(--color-card);
 }
 
-.kt-landing__credit {
-  margin: var(--space-5) 0 0;
-  font-size: 1.25rem;
+.kt-landing__footer > p {
+  max-width: calc(var(--wide-width) - 2 * var(--space-6));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.kt-landing__footer > .kt-landing__wordmark {
+  margin-bottom: var(--space-5);
+  font-size: clamp(4rem, 15vw, 13rem);
+  font-weight: 420;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.kt-landing__footer > .kt-landing__credit {
+  margin-top: var(--space-6);
+  margin-bottom: 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-muted);
+  font-size: 1.125rem;
+  font-style: italic;
+  font-weight: 400;
   text-align: right;
 }
 
-.kt-landing__wordmark {
-  margin: 0 0 var(--space-4);
-  font-size: clamp(4rem, 17vw, 16rem);
-  line-height: 0.85;
+.muted-on-ink {
+  font-size: var(--text-small);
 }
 
-.muted-on-ink {
-  opacity: 1;
-  font-size: 0.875rem;
+@media (min-width: 640px) {
+  .kt-landing__nav,
+  .kt-hero,
+  .kt-trust,
+  .kt-section,
+  .kt-band__inner,
+  .kt-landing__footer {
+    padding-right: var(--space-6);
+    padding-left: var(--space-6);
+  }
 }
 
 @media (min-width: 960px) {
   .kt-hero {
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    padding-top: var(--space-7);
   }
 
   .kt-band__inner {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
     align-items: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .kt-hero__sticker {
-    width: 88px;
-    height: 88px;
-    font-size: 1rem;
-  }
-
-  .kt-trust__item {
-    border-right: 0;
-    border-bottom: var(--border);
   }
 }

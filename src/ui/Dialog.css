@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-4);
-  background: rgba(23, 22, 63, 0.55);
+  background: var(--scrim);
 }
 
 .kt-dialog {
@@ -15,15 +15,15 @@
   max-height: calc(100vh - var(--space-6));
   overflow: auto;
   padding: var(--space-5);
-  border: var(--border);
+  border: var(--rule);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-float);
   background: var(--color-card);
   color: var(--color-ink);
 }
 
 .kt-dialog h2 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 .kt-dialog__actions {

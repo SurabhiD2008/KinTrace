@@ -11,8 +11,8 @@ test('home page renders with the design tokens applied and a clean console', asy
 
   await expect(page.getByRole('link', { name: 'KinTrace' }).first()).toBeVisible();
   // The live comparison band shows the status colours from the tokens.
-  await expect(page.locator('.kt-band [data-status="discuss"]').first()).toHaveCSS('background-color', 'rgb(244, 197, 66)');
-  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(244, 236, 220)');
+  await expect(page.locator('.kt-band [data-status="discuss"]').first()).toHaveCSS('background-color', 'rgb(255, 216, 74)');
+  await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(238, 242, 236)');
   expect(errors).toEqual([]);
 });
 

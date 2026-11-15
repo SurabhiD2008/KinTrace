@@ -1,18 +1,25 @@
+/* A status label is a swipe of highlighter behind the words, not a boxed badge.
+   The uneven corners are the start and end of the marker stroke. */
 .kt-sticker {
   display: inline-flex;
   align-items: center;
-  padding: var(--space-1) var(--space-2);
-  border: var(--border);
-  border-radius: var(--radius);
+  padding: 1px var(--space-2);
+  border: 1px solid transparent;
+  border-radius: 3px 9px 4px 10px;
   background: var(--color-card);
   color: var(--color-ink);
   font-family: var(--font-body);
   font-size: var(--sticker-size);
   font-weight: 700;
-  line-height: 1.3;
-  text-transform: uppercase;
+  line-height: 1.45;
   letter-spacing: var(--sticker-tracking);
   white-space: nowrap;
+}
+
+.kt-sticker--neutral {
+  border-color: var(--color-rule);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
 }
 
 .kt-sticker--meets {
@@ -28,6 +35,6 @@
 }
 
 .kt-sticker--unknown {
+  border: 1px dashed var(--color-ink);
   background: var(--status-unknown);
-  border: var(--border-dashed);
 }

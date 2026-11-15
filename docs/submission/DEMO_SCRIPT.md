@@ -54,7 +54,7 @@ Voice-over is about 390 words, a comfortable pace for 2:40. Times are cumulative
 
 **On screen:**
 1. Click **See findings**.
-2. The breast and ovarian cancer guideline (NICE CG164) shows the **Meets criteria** sticker. The mother, maternal aunt and maternal grandmother are ringed on the tree.
+2. The breast and ovarian cancer guideline (NICE CG164) shows the **Meets criteria** label, marked in highlighter. The mother, maternal aunt and maternal grandmother are ringed on the tree.
 3. Expand the finding: the rule steps are listed, each marked passed, with the relatives named.
 4. Move to the **What we don't know** panel: point at Data completeness and the list of gaps (the paternal grandparents unknown, missing ages).
 5. Point at the CG164 rule about both breasts, marked **Worth discussing**: it is open because it is not recorded whether one or both of the mother's breasts were affected. Show its "What would change this" line.
@@ -90,7 +90,7 @@ Voice-over is about 390 words, a comfortable pace for 2:40. Times are cumulative
 4. Terminal: the `npm run verify` table, all PASS. Then the README Testing table with the counts.
 5. Browser: `docs/BUGS_FOUND.md` on GitHub, scroll the bug headings.
 
-**Voice-over:** "Under the hood: every finding comes from a plain TypeScript function, tested at each age threshold and either side of it. No model decides anything. AI is used in exactly one place, turning text into proposed entries, it's off until you switch it on, and any failure falls back to the offline parser. The tree never leaves the browser: a test walks the whole app and asserts zero requests to any other origin. There are 1002 unit, property and fuzz tests, 267 browser tests across three engines and five screen widths, and a mutation score of 78.4% on the rules. The edge-case tests found 16 real bugs, like two tabs silently overwriting each other's tree, and a report dated the wrong day in some time zones. Each is fixed, with a test."
+**Voice-over:** "Under the hood: every finding comes from a plain TypeScript function, tested at each age threshold and either side of it. No model decides anything. AI is used in exactly one place, turning text into proposed entries, it's off until you switch it on, and any failure falls back to the offline parser. The tree never leaves the browser: a test walks the whole app and asserts zero requests to any other origin. There are 1007 unit, property and fuzz tests, 267 browser tests across three engines and five screen widths, and a mutation score of 78.4% on the rules. The edge-case tests found 16 real bugs, like two tabs silently overwriting each other's tree, and a report dated the wrong day in some time zones. Each is fixed, with a test."
 
 ### 2:30 Limits and roadmap
 

@@ -73,7 +73,7 @@ The table is generated from the guideline registry in `src/guidelines`; a unit t
 <!-- tests:start -->
 | Suite | Tests | What it covers |
 | --- | --- | --- |
-| Unit (domain, guidelines, parser, state, i18n, docs) | 754 | Vitest; pure functions, guideline rules at and either side of their age thresholds |
+| Unit (domain, guidelines, parser, state, i18n, docs) | 759 | Vitest; pure functions, guideline rules at and either side of their age thresholds |
 | Component | 134 | React Testing Library in jsdom; pages, dialogs, Quick add, the report |
 | Property-based | 17 | fast-check, 500 generated families per property, fixed seed |
 | Fuzz | 50 | hostile imports and hostile free text against the parser and the loader |
@@ -83,7 +83,7 @@ The table is generated from the guideline registry in `src/guidelines`; a unit t
 | Browser, WebKit | 23 | the same set as Firefox |
 | Browser, Chromium at 320, 390, 768, 1024, 1360 px | 130 | the main flows at each width (26 per width), in verify:final |
 
-Unit-suite total: 1002. Line coverage 97.88% and branch coverage 91.28% over src/domain, src/guidelines and src/parser. Mutation score 78.4% (1377 of 1757 scored mutants killed, Stryker on the guideline rules and the relationship engine, run 2026-11-14).
+Unit-suite total: 1007. Line coverage 97.88% and branch coverage 91.28% over src/domain, src/guidelines and src/parser. Mutation score 78.4% (1377 of 1757 scored mutants killed, Stryker on the guideline rules and the relationship engine, run 2026-11-14).
 <!-- tests:end -->
 
 - One command, `npm run verify`, runs every check and prints PASS or FAIL for each: lint, types, unit tests with coverage thresholds (90% of lines and 85% of branches on the domain, guidelines and parser), build, browser tests, secret scan of the source, the build and the git history, dependency check, hygiene scan, documentation check (this README's numbers are produced or checked by it), bundle budget of 250 KB and the sample check. `npm run verify:final` adds three consecutive runs, the widths 320, 390, 768, 1024 and 1360, and a fresh-clone run.

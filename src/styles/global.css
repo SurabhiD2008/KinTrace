@@ -15,12 +15,11 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--color-paper);
-  background-image: radial-gradient(var(--grid-dot) 1.2px, transparent 1.4px);
-  background-size: var(--grid-size) var(--grid-size);
   color: var(--color-ink);
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
   /* A word longer than its column (a guideline name on a phone) wraps instead of widening the page. */
   overflow-wrap: break-word;
 }
@@ -33,26 +32,27 @@ h4,
   margin: 0 0 var(--space-3);
   font-family: var(--font-heading);
   font-weight: var(--heading-weight);
-  text-transform: uppercase;
+  font-optical-sizing: auto;
   letter-spacing: var(--heading-tracking);
-  line-height: 1.05;
+  line-height: 1.12;
+  text-wrap: balance;
   hyphens: auto;
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: 2.441rem;
 }
 
 h2 {
-  font-size: 2.25rem;
+  font-size: 1.75rem;
 }
 
 h3 {
-  font-size: 1.625rem;
+  font-size: 1.3125rem;
 }
 
 h4 {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 }
 
 p {
@@ -70,7 +70,17 @@ table {
 
 a {
   color: var(--color-blue);
-  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+::selection {
+  background: var(--color-mustard);
+  color: var(--color-ink);
 }
 
 :focus-visible {
@@ -115,38 +125,64 @@ a.kt-button {
 /* A small pressable label: relatives, filters, examples. */
 .kt-chip {
   min-height: var(--touch-target);
-  padding: var(--space-1) var(--space-3);
+  padding: var(--space-1) var(--space-4);
   border: var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-pill);
   background: var(--color-card);
   color: var(--color-ink);
-  font-weight: 700;
+  font-weight: 650;
   cursor: pointer;
 }
 
+.kt-chip:hover:not([aria-pressed='true']) {
+  background: var(--color-tan);
+}
+
 .logo {
-  font-size: 4.5rem;
+  font-size: 2rem;
   margin-bottom: var(--space-2);
 }
 
-/* The name as a link home, on pages without the landing header. */
+/* The name as a link home. The mark before it is a couple from a pedigree: a square and a
+   circle joined by a line. */
 .kt-wordmark {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28em;
+  min-height: var(--touch-target);
+  background: linear-gradient(var(--color-ink), var(--color-ink)) 0.3em 50% / 1em 1.5px no-repeat;
   color: var(--color-ink);
   text-decoration: none;
 }
 
+.kt-wordmark::before,
+.kt-wordmark::after {
+  content: '';
+  flex: none;
+  width: 0.5em;
+  height: 0.5em;
+  border: var(--border);
+  background: var(--color-paper);
+}
+
+.kt-wordmark::after {
+  order: -1;
+  margin-right: 0.18em;
+  border-radius: 50%;
+  background: var(--color-mustard);
+}
+
+.kt-wordmark::before {
+  order: -2;
+}
+
 @media (max-width: 480px) {
   h1 {
-    font-size: 2.5rem;
-  }
-
-  .logo {
-    font-size: 3.25rem;
+    font-size: 2rem;
   }
 
   h2 {
-    font-size: 1.875rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -161,24 +197,24 @@ a.kt-button {
   }
 }
 
-/* Notices: used by the builder and by the storage notices every page shows. */
+/* Notices: used by the builder and by the storage notices every page shows.
+   A slip of paper with a marker stripe down its edge. */
 .kt-notice {
   margin: 0;
   padding: var(--space-4);
-  border: var(--border);
-  border-radius: var(--radius);
-  background: var(--color-mustard);
+  border: var(--rule);
+  border-left: 6px solid var(--color-mustard);
+  border-radius: var(--radius-sheet);
+  background: var(--color-card);
 }
 
 .kt-notice--error {
-  background: var(--color-card);
-  border-color: var(--color-magenta);
-  border-width: 3px;
+  border-left-color: var(--color-magenta);
 }
 
 .kt-notice p {
   margin-bottom: var(--space-3);
-  font-weight: 700;
+  font-weight: 650;
 }
 
 .kt-storage-notices {

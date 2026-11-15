@@ -16,24 +16,33 @@ export interface StaticPedigreeProps {
   /** What a screen reader says for the whole drawing. */
   label: string;
   className?: string;
+  /** Number the generations I, II, III down the left margin, as on a clinical pedigree. */
+  generations?: boolean;
 }
 
 /** Room around the tree for labels and the proband arrow, as on the interactive tree. */
 const MARGIN = { side: 80, top: 44, bottom: 110 };
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 
 /**
  * The family tree as one plain vector drawing: no buttons, no zoom. It
  * scales to whatever box it is placed in, so it prints sharply and fits a page.
  */
-export function StaticPedigree({ pedigree, highlightIds = [], nameFor, label, className }: StaticPedigreeProps) {
+export function StaticPedigree({ pedigree, highlightIds = [], nameFor, label, className, generations = false }: StaticPedigreeProps) {
   const layout = useMemo(() => layoutPedigree(pedigree), [pedigree]);
   const name = nameFor ?? ((id: PersonId) => personName(pedigree, id));
   const adoptedIn = new Set(pedigree.parentLinks.filter((l) => l.kind === 'adoptive').map((l) => l.childId));
   const { minX, minY, width, height } = layout.bounds;
+  const rows = generations ? [...new Set(layout.nodes.filter((node) => !node.spare).map((node) => node.y))].sort((a, b) => a - b) : [];
   const viewBox = `${minX - MARGIN.side} ${minY - MARGIN.top} ${width + MARGIN.side * 2} ${height + MARGIN.top + MARGIN.bottom}`;
 
   return (
     <svg className={className} viewBox={viewBox} preserveAspectRatio="xMidYMid meet" role="img" aria-label={label}>
+      {rows.map((y, index) => (
+        <text key={y} className="kt-generation" x={minX - MARGIN.side + 14} y={y + 6} aria-hidden="true">
+          {ROMAN[index] ?? ''}
+        </text>
+      ))}
       {layout.descents.map((descent) => (
         <DescentLine key={descent.id} descent={descent} />
       ))}

@@ -60,8 +60,8 @@
   flex-direction: column;
   gap: var(--space-2);
   padding: var(--space-3);
-  border: var(--border);
-  border-radius: var(--radius);
+  border: var(--rule);
+  border-radius: var(--radius-sheet);
   background: var(--color-paper);
 }
 
@@ -83,12 +83,13 @@
 
 .kt-suggestion__title {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   overflow-wrap: anywhere;
 }
 
 .kt-suggestion__quote mark {
   padding: 0 var(--space-1);
+  border-radius: 2px 6px 3px 7px;
   background: var(--color-mustard);
   color: var(--color-ink);
 }
@@ -104,13 +105,13 @@
 
 .kt-quick__unparsed {
   padding: var(--space-3);
-  border: var(--border-dashed);
-  border-radius: var(--radius);
+  border: 1px dashed var(--color-ink);
+  border-radius: var(--radius-sheet);
   background: var(--color-paper);
 }
 
 .kt-quick__unparsed h3 {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 }
 
 .kt-quick__unparsed ul {

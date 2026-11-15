@@ -67,7 +67,7 @@ export function LandingPage() {
       </div>
 
       <header className="kt-landing__nav">
-        <Link to={ROUTES.home} className="kt-landing__logo heading">
+        <Link to={ROUTES.home} className="kt-landing__logo kt-wordmark heading">
           {t('app.name')}
         </Link>
         <nav aria-label={t('landing.nav')} className="kt-landing__links">
@@ -101,10 +101,11 @@ export function LandingPage() {
             </div>
           </div>
           <figure className="kt-hero__plate">
-            <p className="kt-hero__fig heading" aria-hidden="true">{t('landing.fig')}</p>
-            <StaticPedigree className="kt-hero__tree" pedigree={sample} highlightIds={cancerEvidence} label={t('landing.figLabel')} />
-            <figcaption>{t('landing.figCaption')}</figcaption>
-            <p className="kt-hero__sticker heading">{t('landing.sticker')}</p>
+            <StaticPedigree className="kt-hero__tree" pedigree={sample} highlightIds={cancerEvidence} label={t('landing.figLabel')} generations />
+            <p className="kt-hero__sticker">{t('landing.sticker')}</p>
+            <figcaption>
+              <span className="kt-hero__fig">{t('landing.fig')}</span> {t('landing.figCaption')}
+            </figcaption>
           </figure>
         </section>
 
@@ -122,7 +123,7 @@ export function LandingPage() {
           <h2 id="how-title">{t('landing.how.title')}</h2>
           <ol className="kt-how">
             {HOW.map((step) => (
-              <li key={step.number} className="kt-card kt-how__card">
+              <li key={step.number} className="kt-how__card">
                 <span className="kt-how__number heading" aria-hidden="true">{step.number}</span>
                 <h3>{t(step.title)}</h3>
                 <p>{t(step.body)}</p>
@@ -135,18 +136,18 @@ export function LandingPage() {
           <SectionLabel number="02" />
           <h2 id="checks-title">{t('landing.checks.title')}</h2>
           <div className="kt-checks">
-            <div className="kt-card">
+            <div className="kt-checks__row">
               <h3>{t('landing.checks.cancer.title')}</h3>
               <ul>
                 <li>{t('landing.checks.cancer.breast')}</li>
                 <li>{t('landing.checks.cancer.lynch')}</li>
               </ul>
             </div>
-            <div className="kt-card">
+            <div className="kt-checks__row">
               <h3>{t('landing.checks.heart.title')}</h3>
               <p>{t('landing.checks.heart.body')}</p>
             </div>
-            <div className="kt-checks__next">
+            <div className="kt-checks__row kt-checks__next">
               <h3>{t('landing.checks.next.title')}</h3>
               <p>{t('landing.checks.next.body')}</p>
             </div>

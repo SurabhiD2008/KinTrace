@@ -1,8 +1,8 @@
+/* A sheet of paper: a hairline edge and square corners, no shadow. */
 .kt-card {
   padding: var(--space-5);
-  border: var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  border: var(--rule);
+  border-radius: var(--radius-sheet);
   background: var(--color-card);
   color: var(--color-ink);
 }
