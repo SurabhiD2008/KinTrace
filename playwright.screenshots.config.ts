@@ -1,8 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 import base from './playwright.config';
 
-// `npm run screenshots`: refreshes the pictures of the website in media/. Kept apart from the
-// test suite because it writes files in the repository.
+// `npm run screenshots`: saves full-page pictures of the website in test-results/screenshots/
+// for review. Kept apart from the test suite because it is not a check.
 export default defineConfig({
   ...base,
   testDir: 'tests/capture',

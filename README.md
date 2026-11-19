@@ -6,7 +6,7 @@ Live site: https://kintrace-beta.vercel.app. Repository: https://github.com/Sura
 
 | Home | Findings with evidence rings | One-page doctor report |
 | --- | --- | --- |
-| ![KinTrace home page](media/landing-desktop.png) | ![Findings page with the sample family](media/findings-desktop.png) | ![Doctor report](media/report-desktop.png) |
+| ![KinTrace home page](media/screenshot-01-home-hero.png) | ![Findings page with the sample family](media/screenshot-09-findings.png) | ![Doctor report](media/screenshot-13-doctor-report.png) |
 
 ## What it does
 
@@ -123,7 +123,7 @@ The app needs no configuration and no key: Quick add uses the offline parser, an
 | `npm run test:mutation` | Stryker on the guideline rules and the relationship engine; updates `docs/mutation-score.json`. |
 | `npm run check:providers` | One tiny real call per AI provider (costs money; never part of `verify`). |
 | `npm run eval:parser` | The parser evaluation set; with a key, also through the real AI parser (costs money). |
-| `npm run screenshots` | Refreshes the pictures in `media/`. |
+| `npm run screenshots` | Saves full-page pictures of the home, findings and report pages, at desktop and phone widths, in `test-results/screenshots/` for review. |
 | `npm run typecheck`, `npm run lint` | Strict type check; ESLint with no warnings allowed. |
 
 ### Environment variables
